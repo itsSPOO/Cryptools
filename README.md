@@ -243,34 +243,22 @@ netlify deploy --prod --dir=dist
 
 ### Deploy to GitHub Pages
 
-1. **Install gh-pages:**
+1. **Enable GitHub Pages:**
+   - Go to repository Settings → Pages
+   - Select "GitHub Actions" as source
+   - The workflow will automatically deploy on push to main branch
+
+2. **Manual deployment (optional):**
 ```bash
+# Install gh-pages
 npm install -D gh-pages
-```
 
-2. **Add to package.json:**
-```json
-{
-  "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
-  },
-  "homepage": "https://yourusername.github.io/cryptotools"
-}
-```
-
-3. **Update vite.config.ts:**
-```typescript
-export default defineConfig({
-  base: '/cryptotools/',
-  // ... rest of config
-});
-```
-
-4. **Deploy:**
-```bash
+# Deploy
 npm run deploy
 ```
+
+3. **Your site will be available at:**
+   `https://itsspoo.github.io/Cryptools`
 
 ### Environment Variables
 
