@@ -6,7 +6,7 @@ export const Base64Tool: React.FC = () => {
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
   const [error, setError] = useState('');
-  const [mode, setMode] = useState<'encode' | 'decode'>('encode');
+  const [mode] = useState<'encode' | 'decode'>('encode');
 
   const handleEncode = () => {
     try {

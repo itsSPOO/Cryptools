@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 // Mock crypto.subtle for testing
 const crypto = {
   subtle: {
-    digest: async (algorithm: string, data: Uint8Array) => {
+    digest: async () => {
       // Simple mock implementation
       return new ArrayBuffer(32);
     },

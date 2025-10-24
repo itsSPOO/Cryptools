@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { ToolCard, InputField, OutputField, Button } from '../ToolCard';
 import { applyCustomCipher, createReverseCipherMapping, CustomCipherMapping } from '@/utils/cryptoUtils';
 import { useStore } from '@/store/useStore';
