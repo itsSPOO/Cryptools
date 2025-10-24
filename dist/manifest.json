@@ -1,0 +1,21 @@
+{
+  "name": "Cryptools - Encryption & Hashing Tools",
+  "short_name": "Cryptools",
+  "description": "Free online encryption, hashing, and text conversion tools",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#3b82f6",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["utilities", "productivity", "developer tools"],
+  "lang": "en",
+  "dir": "ltr"
+}
