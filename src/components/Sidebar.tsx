@@ -32,8 +32,8 @@ export const Sidebar: React.FC = () => {
   };
 
   return (
-    <aside className="w-64 h-full bg-white dark:bg-dark-surface border-r border-light-border dark:border-dark-border overflow-y-auto">
-      <div className="p-4">
+    <aside className="w-64 h-full bg-white dark:bg-dark-surface border-r border-light-border dark:border-dark-border overflow-y-auto mobile-scroll mobile-optimized">
+      <div className="p-3 sm:p-4">
         {/* Search Bar */}
         <div className="mb-4">
           <div className="relative">
@@ -43,7 +43,7 @@ export const Sidebar: React.FC = () => {
               placeholder="Search tools..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-9 py-2 bg-light-bg dark:bg-dark-bg border border-light-border dark:border-dark-border rounded-lg text-sm text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+              className="w-full pl-9 pr-9 py-2 sm:py-3 bg-light-bg dark:bg-dark-bg border border-light-border dark:border-dark-border rounded-lg text-sm text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all touch-target"
             />
             {searchQuery && (
               <button
@@ -68,7 +68,7 @@ export const Sidebar: React.FC = () => {
                     <button
                       onClick={() => setActiveTool(tool.id)}
                       className={clsx(
-                        'w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-all',
+                        'w-full flex items-center gap-3 px-3 py-3 sm:py-2 rounded-lg text-sm font-medium transition-all touch-target',
                         'hover:bg-light-hover dark:hover:bg-dark-hover',
                         activeTool === tool.id
                           ? 'bg-primary text-white shadow-sm'

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useStore } from '@/store/useStore';
 import { Sidebar } from '@/components/Sidebar';
 import { Header } from '@/components/Header';
@@ -6,8 +6,8 @@ import { Footer } from '@/components/Footer';
 import { WelcomeScreen } from '@/components/WelcomeScreen';
 import { ConsentBanner } from '@/components/ConsentBanner';
 import { ScrollToTop } from '@/components/ScrollToTop';
-import { KeyboardShortcuts } from '@/components/KeyboardShortcuts';
-import { AdBannerHorizontal, AdBannerInFeed } from '@/components/AdBanner';
+import { AdBannerHorizontal, AdBannerInFeed, AdBannerSidebar } from '@/components/AdBanner';
+import { Menu, X } from 'lucide-react';
 
 // Tool Components
 import { Base64Tool } from '@/components/tools/Base64Tool';
@@ -42,6 +42,7 @@ const toolComponents: Record<string, React.FC> = {
 
 function App() {
   const { activeTool, theme, toggleTheme } = useStore();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Apply theme to document
   useEffect(() => {
@@ -60,27 +61,85 @@ function App() {
         e.preventDefault();
         toggleTheme();
       }
+      // Escape to close mobile menu
+      if (e.key === 'Escape' && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+      }
     };
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [toggleTheme]);
+  }, [toggleTheme, isMobileMenuOpen]);
+
+  // Close mobile menu when tool is selected
+  useEffect(() => {
+    if (activeTool && isMobileMenuOpen) {
+      setIsMobileMenuOpen(false);
+    }
+  }, [activeTool, isMobileMenuOpen]);
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.classList.add('mobile-menu-open');
+    } else {
+      document.body.classList.remove('mobile-menu-open');
+    }
+    
+    return () => {
+      document.body.classList.remove('mobile-menu-open');
+    };
+  }, [isMobileMenuOpen]);
 
   const ActiveToolComponent = activeTool ? toolComponents[activeTool] : null;
 
   return (
-    <div className="flex flex-col h-screen bg-light-bg dark:bg-dark-bg font-sans">
+    <div className="flex flex-col h-screen bg-light-bg dark:bg-dark-bg font-sans mobile-viewport">
       <Header />
       
-      <div className="flex flex-1 overflow-hidden">
-        <Sidebar />
+      <div className="flex flex-1 overflow-hidden relative">
+         {/* Mobile Menu Button */}
+         <button
+           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+           className="lg:hidden fixed top-4 left-4 z-50 p-3 bg-white dark:bg-dark-surface border border-light-border dark:border-dark-border rounded-lg shadow-lg touch-target hover:shadow-xl transition-all duration-200"
+           aria-label="Toggle mobile menu"
+         >
+          {isMobileMenuOpen ? (
+            <X className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+          ) : (
+            <Menu className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+          )}
+        </button>
+
+        {/* Mobile Menu Overlay */}
+        {isMobileMenuOpen && (
+          <div 
+            className="lg:hidden fixed inset-0 bg-black/50 z-40"
+            onClick={() => setIsMobileMenuOpen(false)}
+          />
+        )}
+
+         {/* Sidebar - Mobile: Hidden by default, Desktop: Always visible */}
+         <aside className={`
+           ${isMobileMenuOpen ? 'translate-x-0 block mobile-sidebar-visible' : '-translate-x-full hidden mobile-sidebar-hidden'}
+           lg:translate-x-0 lg:block
+           fixed lg:static inset-y-0 left-0 z-50 lg:z-auto
+           w-64 h-full bg-white dark:bg-dark-surface 
+           border-r border-light-border dark:border-dark-border 
+           overflow-y-auto mobile-scroll mobile-optimized
+           transition-transform duration-300 ease-in-out
+         `}>
+          <Sidebar />
+        </aside>
         
-        <main className="flex-1 overflow-y-auto">
-          <div className="p-4 sm:p-8">
-            {/* Top Ad Banner */}
-            <AdBannerHorizontal />
+        <main className="flex-1 overflow-y-auto mobile-scroll mobile-optimized">
+          <div className="p-3 sm:p-6 lg:p-8">
+            {/* Top Ad Banner - Responsive */}
+            <div className="mb-4 sm:mb-6">
+              <AdBannerHorizontal />
+            </div>
             
-            <div className="max-w-5xl mx-auto mb-8">
+            <div className="max-w-5xl mx-auto mb-6 sm:mb-8">
               {ActiveToolComponent ? (
                 <ActiveToolComponent />
               ) : (
@@ -88,18 +147,28 @@ function App() {
               )}
             </div>
             
-            {/* In-Feed Ad Banner (between content and footer) */}
-            {activeTool && <AdBannerInFeed />}
+            {/* In-Feed Ad Banner (between content and footer) - Mobile optimized */}
+            {activeTool && (
+              <div className="mb-4 sm:mb-6">
+                <AdBannerInFeed />
+              </div>
+            )}
             
             {/* Footer at bottom of scrollable content */}
             <Footer />
           </div>
         </main>
+        
+        {/* Right Sidebar Ad - Hidden on mobile and tablet */}
+        <aside className="hidden xl:block w-80 bg-white dark:bg-dark-surface border-l border-light-border dark:border-dark-border overflow-y-auto">
+          <div className="p-4">
+            <AdBannerSidebar />
+          </div>
+        </aside>
       </div>
 
-      <ConsentBanner />
-      <ScrollToTop />
-      <KeyboardShortcuts />
+       <ConsentBanner />
+       <ScrollToTop />
     </div>
   );
 }
