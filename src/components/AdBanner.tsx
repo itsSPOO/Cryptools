@@ -41,7 +41,7 @@ export const AdBannerHorizontal: React.FC = () => (
   <div className="w-full flex justify-center my-4 sm:my-6">
     <div className="w-full max-w-4xl mx-auto px-2 sm:px-4">
       <AdBanner 
-        slot="1234567890" // Replace with your slot ID
+        slot="8665748688" // Wide banner slot
         format="auto"
         className="w-full min-h-[80px] sm:min-h-[90px] bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center"
       />
@@ -53,7 +53,7 @@ export const AdBannerHorizontal: React.FC = () => (
 export const AdBannerSidebar: React.FC = () => (
   <div className="w-full my-4 px-2">
     <AdBanner 
-      slot="0987654321" // Replace with your slot ID
+      slot="8186402381" // Square ad slot
       format="auto"
       className="w-full min-h-[250px] bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center"
     />
@@ -65,7 +65,7 @@ export const AdBannerInFeed: React.FC = () => (
   <div className="w-full flex justify-center my-6 sm:my-8">
     <div className="w-full max-w-4xl mx-auto px-2 sm:px-4">
       <AdBanner 
-        slot="1122334455" // Replace with your slot ID
+        slot="8665748688" // Wide banner slot
         format="fluid"
         className="w-full min-h-[100px] sm:min-h-[120px] bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center"
       />
@@ -77,7 +77,7 @@ export const AdBannerInFeed: React.FC = () => (
 export const AdBannerRightSidebar1: React.FC = () => (
   <div className="w-full my-4 px-2">
     <AdBanner 
-      slot="2233445566" // Replace with your slot ID
+      slot="8186402381" // Square ad slot
       format="auto"
       className="w-full min-h-[250px] bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center"
     />
@@ -88,7 +88,7 @@ export const AdBannerRightSidebar1: React.FC = () => (
 export const AdBannerRightSidebar2: React.FC = () => (
   <div className="w-full my-4 px-2">
     <AdBanner 
-      slot="3344556677" // Replace with your slot ID
+      slot="8186402381" // Square ad slot
       format="auto"
       className="w-full min-h-[250px] bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center"
     />
@@ -99,7 +99,7 @@ export const AdBannerRightSidebar2: React.FC = () => (
 export const AdBannerRightSidebar3: React.FC = () => (
   <div className="w-full my-4 px-2">
     <AdBanner 
-      slot="4455667788" // Replace with your slot ID
+      slot="8186402381" // Square ad slot
       format="auto"
       className="w-full min-h-[250px] bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center"
     />
