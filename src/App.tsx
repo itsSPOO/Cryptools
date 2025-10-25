@@ -5,7 +5,7 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { WelcomeScreen } from '@/components/WelcomeScreen';
 import { KeyboardShortcuts } from '@/components/KeyboardShortcuts';
-import { AdBannerHorizontal, AdBannerInFeed, AdBannerRightSidebar1, AdBannerRightSidebar2, AdBannerRightSidebar3 } from '@/components/AdBanner';
+import { AdBannerInFeed, AdBannerRightSidebar1, AdBannerRightSidebar2, AdBannerRightSidebar3 } from '@/components/AdBanner';
 import { Menu, X } from 'lucide-react';
 
 // Tool Components
