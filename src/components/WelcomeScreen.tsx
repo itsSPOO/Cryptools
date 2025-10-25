@@ -1,5 +1,5 @@
 import React from 'react';
-import { Lock, Shield, Key, Zap, Code2 } from 'lucide-react';
+import { Shield, Key, Zap, Code2 } from 'lucide-react';
 
 export const WelcomeScreen: React.FC = () => {
 
@@ -11,7 +11,7 @@ export const WelcomeScreen: React.FC = () => {
           <div className="relative">
             <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full"></div>
             <div className="relative p-6 bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl">
-              <Lock className="w-20 h-20 text-primary" />
+              <i className="fas fa-code text-primary text-6xl" />
             </div>
           </div>
         </div>

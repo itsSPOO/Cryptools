@@ -7,6 +7,8 @@ interface StoreState extends AppState {
   addPreset: (preset: ToolPreset) => void;
   removePreset: (presetId: string) => void;
   updatePreset: (presetId: string, updates: Partial<ToolPreset>) => void;
+  toggleFavorite: (toolId: string) => void;
+  isFavorite: (toolId: string) => boolean;
   setConsent: (consent: boolean) => void;
 }
 
@@ -31,29 +33,30 @@ const saveState = (state: Partial<AppState>) => {
 
 const initialState = loadState();
 
-export const useStore = create<StoreState>((set) => ({
+export const useStore = create<StoreState>((set, get) => ({
   activeTool: null,
   theme: (initialState.theme as 'light' | 'dark') || 'dark',
   presets: initialState.presets || [],
+  favorites: initialState.favorites || [],
   consentGiven: initialState.consentGiven || false,
 
   setActiveTool: (toolId) => set({ activeTool: toolId }),
 
   toggleTheme: () => set((state) => {
     const newTheme = state.theme === 'dark' ? 'light' : 'dark';
-    saveState({ theme: newTheme, presets: state.presets, consentGiven: state.consentGiven });
+    saveState({ theme: newTheme, presets: state.presets, favorites: state.favorites, consentGiven: state.consentGiven });
     return { theme: newTheme };
   }),
 
   addPreset: (preset) => set((state) => {
     const newPresets = [...state.presets, preset];
-    saveState({ theme: state.theme, presets: newPresets, consentGiven: state.consentGiven });
+    saveState({ theme: state.theme, presets: newPresets, favorites: state.favorites, consentGiven: state.consentGiven });
     return { presets: newPresets };
   }),
 
   removePreset: (presetId) => set((state) => {
     const newPresets = state.presets.filter((p) => p.id !== presetId);
-    saveState({ theme: state.theme, presets: newPresets, consentGiven: state.consentGiven });
+    saveState({ theme: state.theme, presets: newPresets, favorites: state.favorites, consentGiven: state.consentGiven });
     return { presets: newPresets };
   }),
 
@@ -61,12 +64,24 @@ export const useStore = create<StoreState>((set) => ({
     const newPresets = state.presets.map((p) =>
       p.id === presetId ? { ...p, ...updates } : p
     );
-    saveState({ theme: state.theme, presets: newPresets, consentGiven: state.consentGiven });
+    saveState({ theme: state.theme, presets: newPresets, favorites: state.favorites, consentGiven: state.consentGiven });
     return { presets: newPresets };
   }),
 
+  toggleFavorite: (toolId) => set((state) => {
+    const newFavorites = state.favorites.includes(toolId)
+      ? state.favorites.filter(id => id !== toolId)
+      : [...state.favorites, toolId];
+    saveState({ theme: state.theme, presets: state.presets, favorites: newFavorites, consentGiven: state.consentGiven });
+    return { favorites: newFavorites };
+  }),
+
+  isFavorite: (toolId) => {
+    return get().favorites.includes(toolId);
+  },
+
   setConsent: (consent) => set((state) => {
-    saveState({ theme: state.theme, presets: state.presets, consentGiven: consent });
+    saveState({ theme: state.theme, presets: state.presets, favorites: state.favorites, consentGiven: consent });
     return { consentGiven: consent };
   }),
 }));

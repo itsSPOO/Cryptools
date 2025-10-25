@@ -67,7 +67,7 @@ export const tools: Tool[] = [
     name: 'Caesar Cipher',
     category: 'ciphers',
     description: 'Classical substitution cipher with shift',
-    icon: 'Key',
+    icon: 'Code',
   },
   {
     id: 'rot13',
@@ -81,7 +81,7 @@ export const tools: Tool[] = [
     name: 'Vigenère Cipher',
     category: 'ciphers',
     description: 'Polyalphabetic substitution cipher with keyword',
-    icon: 'Lock',
+    icon: 'Code',
   },
   {
     id: 'atbash',
@@ -98,6 +98,13 @@ export const tools: Tool[] = [
     category: 'custom',
     description: 'Create and save your own character mapping rules',
     icon: 'Settings',
+  },
+  {
+    id: 'password',
+    name: 'Password Generator',
+    category: 'custom',
+    description: 'Generate secure passwords with customizable options',
+    icon: 'Code2',
   },
 ];
 

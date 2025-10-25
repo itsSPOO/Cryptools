@@ -344,6 +344,120 @@ export const createReverseCipherMapping = (mapping: CustomCipherMapping): Custom
   return reversed;
 };
 
+// ============= Password Generator =============
+export interface PasswordOptions {
+  length: number;
+  includeUppercase: boolean;
+  includeLowercase: boolean;
+  includeNumbers: boolean;
+  includeSymbols: boolean;
+  excludeSimilar: boolean;
+  excludeAmbiguous: boolean;
+  customCharset?: string;
+}
+
+export const generatePassword = (options: PasswordOptions): string => {
+  const {
+    length,
+    includeUppercase,
+    includeLowercase,
+    includeNumbers,
+    includeSymbols,
+    excludeSimilar,
+    excludeAmbiguous,
+    customCharset
+  } = options;
+
+  if (customCharset) {
+    return generateFromCustomCharset(customCharset, length);
+  }
+
+  let charset = '';
+  
+  if (includeUppercase) {
+    charset += excludeSimilar ? 'ABCDEFGHJKLMNPQRSTUVWXYZ' : 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  }
+  
+  if (includeLowercase) {
+    charset += excludeSimilar ? 'abcdefghijkmnpqrstuvwxyz' : 'abcdefghijklmnopqrstuvwxyz';
+  }
+  
+  if (includeNumbers) {
+    charset += excludeAmbiguous ? '23456789' : '0123456789';
+  }
+  
+  if (includeSymbols) {
+    charset += excludeAmbiguous 
+      ? '!@#$%^&*()_+-=[]{}|;:,.<>?' 
+      : '!@#$%^&*()_+-=[]{}|;:,.<>?/~`';
+  }
+
+  if (charset.length === 0) {
+    throw new Error('At least one character type must be selected');
+  }
+
+  let password = '';
+  for (let i = 0; i < length; i++) {
+    password += charset.charAt(Math.floor(Math.random() * charset.length));
+  }
+
+  return password;
+};
+
+const generateFromCustomCharset = (charset: string, length: number): string => {
+  if (charset.length === 0) {
+    throw new Error('Custom charset cannot be empty');
+  }
+
+  let password = '';
+  for (let i = 0; i < length; i++) {
+    password += charset.charAt(Math.floor(Math.random() * charset.length));
+  }
+
+  return password;
+};
+
+export const calculatePasswordStrength = (password: string): {
+  score: number;
+  level: 'Very Weak' | 'Weak' | 'Fair' | 'Good' | 'Strong' | 'Very Strong';
+  feedback: string[];
+} => {
+  let score = 0;
+  const feedback: string[] = [];
+
+  // Length check
+  if (password.length >= 8) score += 1;
+  else feedback.push('Use at least 8 characters');
+
+  if (password.length >= 12) score += 1;
+  if (password.length >= 16) score += 1;
+
+  // Character variety
+  if (/[a-z]/.test(password)) score += 1;
+  else feedback.push('Add lowercase letters');
+
+  if (/[A-Z]/.test(password)) score += 1;
+  else feedback.push('Add uppercase letters');
+
+  if (/[0-9]/.test(password)) score += 1;
+  else feedback.push('Add numbers');
+
+  if (/[^a-zA-Z0-9]/.test(password)) score += 1;
+  else feedback.push('Add special characters');
+
+  // Pattern checks
+  if (!/(.)\1{2,}/.test(password)) score += 1;
+  else feedback.push('Avoid repeated characters');
+
+  if (!/123|abc|qwe|asd|zxc/i.test(password)) score += 1;
+  else feedback.push('Avoid common patterns');
+
+  const levels = ['Very Weak', 'Weak', 'Fair', 'Good', 'Strong', 'Very Strong'];
+  const level = levels[Math.min(Math.floor(score / 2), 5)] as any;
+
+  return { score, level, feedback };
+};
+
 // ============= Code Snippet Generator =============
 export const generateCodeSnippet = (operation: string, params?: Record<string, any>): string => {
   const snippets: Record<string, string> = {

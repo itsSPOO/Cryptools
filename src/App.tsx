@@ -6,6 +6,7 @@ import { Footer } from '@/components/Footer';
 import { WelcomeScreen } from '@/components/WelcomeScreen';
 import { ConsentBanner } from '@/components/ConsentBanner';
 import { ScrollToTop } from '@/components/ScrollToTop';
+import { KeyboardShortcuts } from '@/components/KeyboardShortcuts';
 import { AdBannerHorizontal, AdBannerInFeed, AdBannerSidebar } from '@/components/AdBanner';
 import { Menu, X } from 'lucide-react';
 
@@ -23,6 +24,7 @@ import { RotTool } from '@/components/tools/RotTool';
 import { VigenereTool } from '@/components/tools/VigenereTool';
 import { AtbashTool } from '@/components/tools/AtbashTool';
 import { CustomCipherTool } from '@/components/tools/CustomCipherTool';
+import { PasswordTool } from '@/components/tools/PasswordTool';
 
 const toolComponents: Record<string, React.FC> = {
   base64: Base64Tool,
@@ -38,6 +40,7 @@ const toolComponents: Record<string, React.FC> = {
   vigenere: VigenereTool,
   atbash: AtbashTool,
   custom: CustomCipherTool,
+  password: PasswordTool,
 };
 
 function App() {
@@ -94,14 +97,14 @@ function App() {
   const ActiveToolComponent = activeTool ? toolComponents[activeTool] : null;
 
   return (
-    <div className="flex flex-col h-screen bg-light-bg dark:bg-dark-bg font-sans mobile-viewport">
+    <div className="flex flex-col h-screen bg-gradient-to-br from-light-bg via-light-surface-elevated to-light-bg dark:from-dark-bg dark:via-dark-surface-elevated dark:to-dark-bg font-sans mobile-viewport">
       <Header />
       
       <div className="flex flex-1 overflow-hidden relative">
          {/* Mobile Menu Button */}
          <button
            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-           className="lg:hidden fixed top-4 left-4 z-50 p-3 bg-white dark:bg-dark-surface border border-light-border dark:border-dark-border rounded-lg shadow-lg touch-target hover:shadow-xl transition-all duration-200"
+           className="lg:hidden fixed top-4 left-4 z-50 p-3 bg-gradient-to-br from-white to-light-surface-elevated dark:from-dark-surface dark:to-dark-surface-elevated border border-light-border dark:border-dark-border rounded-xl shadow-lg touch-target hover:shadow-xl transition-all duration-200 backdrop-blur-sm"
            aria-label="Toggle mobile menu"
          >
           {isMobileMenuOpen ? (
@@ -169,6 +172,7 @@ function App() {
 
        <ConsentBanner />
        <ScrollToTop />
+       <KeyboardShortcuts />
     </div>
   );
 }

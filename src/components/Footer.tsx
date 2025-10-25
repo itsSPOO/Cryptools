@@ -1,5 +1,5 @@
 import React from 'react';
-import { Shield, Zap, Lock } from 'lucide-react';
+import { Shield, Zap } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -12,8 +12,8 @@ export const Footer: React.FC = () => {
           {/* Brand Section */}
           <div className="text-center md:text-left">
             <div className="flex items-center justify-center md:justify-start gap-2 mb-3">
-              <div className="p-2 bg-primary/10 rounded-lg">
-                <Lock className="w-5 h-5 text-primary" />
+              <div className="p-2 bg-gradient-to-br from-primary to-accent rounded-lg shadow-lg">
+                <i className="fas fa-code text-white text-lg" />
               </div>
               <h3 className="text-lg font-bold text-gray-900 dark:text-white">
                 Cryptools
@@ -39,7 +39,7 @@ export const Footer: React.FC = () => {
                 <span>100% Client-Side</span>
               </div>
               <div className="flex items-center justify-center gap-2 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
-                <Lock className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
+                <i className="fas fa-code w-3 h-3 sm:w-4 sm:h-4 text-primary" />
                 <span>Zero Data Collection</span>
               </div>
             </div>

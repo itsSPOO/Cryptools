@@ -20,5 +20,6 @@ export interface AppState {
   activeTool: string | null;
   theme: 'light' | 'dark';
   presets: ToolPreset[];
+  favorites: string[];
   consentGiven: boolean;
 }
