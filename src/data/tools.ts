@@ -107,28 +107,6 @@ export const tools: Tool[] = [
     icon: 'Code2',
   },
 
-  // Legal Pages
-  {
-    id: 'privacy',
-    name: 'Privacy Policy',
-    category: 'legal',
-    description: 'Learn how we protect your privacy and data',
-    icon: 'Shield',
-  },
-  {
-    id: 'terms',
-    name: 'Terms of Use',
-    category: 'legal',
-    description: 'Read our terms and conditions',
-    icon: 'FileText',
-  },
-  {
-    id: 'contact',
-    name: 'Contact Us',
-    category: 'legal',
-    description: 'Get in touch with our team',
-    icon: 'MessageCircle',
-  },
 ];
 
 export const categoryNames: Record<string, string> = {
@@ -136,5 +114,4 @@ export const categoryNames: Record<string, string> = {
   hash: 'Hash Generators',
   ciphers: 'Password Ciphers',
   custom: 'Custom Tools',
-  legal: 'Legal & Support',
 };

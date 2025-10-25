@@ -4,7 +4,6 @@ import { Sidebar } from '@/components/Sidebar';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { WelcomeScreen } from '@/components/WelcomeScreen';
-import { ConsentBanner } from '@/components/ConsentBanner';
 import { ScrollToTop } from '@/components/ScrollToTop';
 import { KeyboardShortcuts } from '@/components/KeyboardShortcuts';
 import { AdBannerHorizontal, AdBannerInFeed, AdBannerRightSidebar1, AdBannerRightSidebar2, AdBannerRightSidebar3 } from '@/components/AdBanner';
@@ -188,7 +187,6 @@ function App() {
         </aside>
       </div>
 
-       <ConsentBanner />
        <ScrollToTop />
        <KeyboardShortcuts />
     </div>

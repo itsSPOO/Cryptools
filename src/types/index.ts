@@ -21,6 +21,5 @@ export interface AppState {
   theme: 'light' | 'dark';
   presets: ToolPreset[];
   favorites: string[];
-  consentGiven: boolean;
   isSidebarCollapsed: boolean;
 }

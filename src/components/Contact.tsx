@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, MessageCircle, Github, Twitter, Send, CheckCircle, AlertCircle } from 'lucide-react';
+import { Mail, MessageCircle, Github, Twitter, Send, CheckCircle, AlertCircle, Heart, Zap, Clock, Star } from 'lucide-react';
 
 export const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -32,35 +32,44 @@ export const Contact: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-light-bg via-light-surface-elevated to-light-bg dark:from-dark-bg dark:via-dark-surface-elevated dark:to-dark-bg">
-      <div className="max-w-4xl mx-auto px-4 py-8 sm:py-12">
+      <div className="max-w-5xl mx-auto px-4 py-8 sm:py-12">
         {/* Header */}
         <div className="text-center mb-8 sm:mb-12">
-          <div className="flex justify-center mb-4">
-            <div className="p-4 bg-gradient-to-br from-primary to-accent rounded-2xl shadow-lg">
-              <MessageCircle className="w-8 h-8 text-white" />
+          <div className="flex justify-center mb-6">
+            <div className="p-6 bg-gradient-to-br from-primary to-accent rounded-3xl shadow-2xl transform hover:scale-105 transition-transform duration-300">
+              <MessageCircle className="w-12 h-12 text-white drop-shadow-lg" />
             </div>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          <h1 className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-4">
             Contact Us
           </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-400">
+          <p className="text-xl text-light-text-muted dark:text-dark-text-muted mb-2">
             Get in touch with our team. We'd love to hear from you!
           </p>
+          <div className="flex items-center justify-center gap-2 text-sm text-light-text-subtle dark:text-dark-text-subtle">
+            <Heart className="w-4 h-4 text-error" />
+            <span>We're here to help</span>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           
           {/* Contact Form */}
-          <div className="bg-white dark:bg-dark-surface rounded-2xl shadow-lg border border-light-border dark:border-dark-border overflow-hidden">
-            <div className="p-6 sm:p-8">
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                Send us a Message
-              </h2>
+          <div className="bg-light-surface dark:bg-dark-surface rounded-3xl shadow-2xl border border-light-border dark:border-dark-border overflow-hidden">
+            <div className="p-8 sm:p-10">
+              <div className="flex items-center gap-3 mb-8">
+                <div className="p-3 bg-gradient-to-br from-primary to-primary-dark rounded-xl shadow-lg">
+                  <Send className="w-6 h-6 text-white" />
+                </div>
+                <h2 className="text-3xl font-bold text-light-text dark:text-dark-text">
+                  Send us a Message
+                </h2>
+              </div>
               
               <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label htmlFor="name" className="block text-sm font-semibold text-light-text dark:text-dark-text mb-3">
                       Name *
                     </label>
                     <input
@@ -70,13 +79,13 @@ export const Contact: React.FC = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all bg-white dark:bg-dark-surface text-gray-900 dark:text-white"
+                      className="w-full px-4 py-4 border-2 border-light-border dark:border-dark-border rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all bg-light-surface dark:bg-dark-surface text-light-text dark:text-dark-text shadow-sm hover:shadow-md focus:shadow-lg"
                       placeholder="Your name"
                     />
                   </div>
                   
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label htmlFor="email" className="block text-sm font-semibold text-light-text dark:text-dark-text mb-3">
                       Email *
                     </label>
                     <input
@@ -86,14 +95,14 @@ export const Contact: React.FC = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all bg-white dark:bg-dark-surface text-gray-900 dark:text-white"
+                      className="w-full px-4 py-4 border-2 border-light-border dark:border-dark-border rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all bg-light-surface dark:bg-dark-surface text-light-text dark:text-dark-text shadow-sm hover:shadow-md focus:shadow-lg"
                       placeholder="your@email.com"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  <label htmlFor="subject" className="block text-sm font-semibold text-light-text dark:text-dark-text mb-3">
                     Subject *
                   </label>
                   <select
@@ -102,7 +111,7 @@ export const Contact: React.FC = () => {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all bg-white dark:bg-dark-surface text-gray-900 dark:text-white"
+                    className="w-full px-4 py-4 border-2 border-light-border dark:border-dark-border rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all bg-light-surface dark:bg-dark-surface text-light-text dark:text-dark-text shadow-sm hover:shadow-md focus:shadow-lg"
                   >
                     <option value="">Select a subject</option>
                     <option value="general">General Inquiry</option>
@@ -114,7 +123,7 @@ export const Contact: React.FC = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  <label htmlFor="message" className="block text-sm font-semibold text-light-text dark:text-dark-text mb-3">
                     Message *
                   </label>
                   <textarea
@@ -124,7 +133,7 @@ export const Contact: React.FC = () => {
                     onChange={handleChange}
                     required
                     rows={6}
-                    className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all bg-white dark:bg-dark-surface text-gray-900 dark:text-white resize-none"
+                    className="w-full px-4 py-4 border-2 border-light-border dark:border-dark-border rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all bg-light-surface dark:bg-dark-surface text-light-text dark:text-dark-text resize-none shadow-sm hover:shadow-md focus:shadow-lg"
                     placeholder="Tell us how we can help you..."
                   />
                 </div>
@@ -132,32 +141,32 @@ export const Contact: React.FC = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-primary to-accent hover:from-primary-dark hover:to-accent-dark text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="w-full bg-gradient-to-r from-primary to-accent hover:from-primary-dark hover:to-accent-dark text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 transform hover:scale-105"
                 >
                   {isSubmitting ? (
                     <>
-                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                      Sending...
+                      <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                      <span className="text-lg">Sending...</span>
                     </>
                   ) : (
                     <>
-                      <Send className="w-5 h-5" />
-                      Send Message
+                      <Send className="w-6 h-6" />
+                      <span className="text-lg">Send Message</span>
                     </>
                   )}
                 </button>
 
                 {submitStatus === 'success' && (
-                  <div className="flex items-center gap-2 text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-3">
-                    <CheckCircle className="w-5 h-5" />
-                    <span>Message sent successfully! We'll get back to you soon.</span>
+                  <div className="flex items-center gap-3 text-success dark:text-success-light bg-success-50 dark:bg-success-900/20 border-2 border-success-200 dark:border-success-800 rounded-xl p-4 shadow-lg">
+                    <CheckCircle className="w-6 h-6" />
+                    <span className="font-medium">Message sent successfully! We'll get back to you soon.</span>
                   </div>
                 )}
 
                 {submitStatus === 'error' && (
-                  <div className="flex items-center gap-2 text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-3">
-                    <AlertCircle className="w-5 h-5" />
-                    <span>Failed to send message. Please try again.</span>
+                  <div className="flex items-center gap-3 text-error dark:text-error-light bg-error-50 dark:bg-error-900/20 border-2 border-error-200 dark:border-error-800 rounded-xl p-4 shadow-lg">
+                    <AlertCircle className="w-6 h-6" />
+                    <span className="font-medium">Failed to send message. Please try again.</span>
                   </div>
                 )}
               </form>
@@ -165,106 +174,77 @@ export const Contact: React.FC = () => {
           </div>
 
           {/* Contact Information */}
-          <div className="space-y-6">
+          <div className="space-y-8">
             
             {/* Quick Contact */}
-            <div className="bg-white dark:bg-dark-surface rounded-2xl shadow-lg border border-light-border dark:border-dark-border p-6 sm:p-8">
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                Quick Contact
-              </h2>
-              
-              <div className="space-y-4">
-                <div className="flex items-center gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                  <div className="p-2 bg-primary/10 rounded-lg">
-                    <Mail className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 dark:text-white">Email</h3>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm">contact@cryptools.click</p>
-                  </div>
+            <div className="bg-light-surface dark:bg-dark-surface rounded-3xl shadow-2xl border border-light-border dark:border-dark-border p-8 sm:p-10">
+              <div className="flex items-center gap-3 mb-8">
+                <div className="p-3 bg-gradient-to-br from-success to-success-dark rounded-xl shadow-lg">
+                  <Mail className="w-6 h-6 text-white" />
                 </div>
-
-                <div className="flex items-center gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                  <div className="p-2 bg-primary/10 rounded-lg">
-                    <MessageCircle className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 dark:text-white">Response Time</h3>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm">Usually within 24 hours</p>
-                  </div>
-                </div>
+                <h2 className="text-3xl font-bold text-light-text dark:text-dark-text">
+                  Quick Contact
+                </h2>
               </div>
-            </div>
-
-            {/* Social Links */}
-            <div className="bg-white dark:bg-dark-surface rounded-2xl shadow-lg border border-light-border dark:border-dark-border p-6 sm:p-8">
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                Follow Us
-              </h2>
               
-              <div className="space-y-4">
-                <a
-                  href="https://github.com/cryptools"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-                >
-                  <div className="p-2 bg-gray-900 rounded-lg">
-                    <Github className="w-5 h-5 text-white" />
+              <div className="space-y-6">
+                <div className="flex items-center gap-4 p-6 bg-primary-50 dark:bg-primary-900/20 rounded-2xl border border-primary-200 dark:border-primary-800 shadow-lg hover:shadow-xl transition-shadow">
+                  <div className="p-3 bg-primary rounded-xl shadow-lg">
+                    <Mail className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 dark:text-white">GitHub</h3>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm">View our source code</p>
+                    <h3 className="text-lg font-bold text-light-text dark:text-dark-text">Email</h3>
+                    <p className="text-light-text-muted dark:text-dark-text-muted">contact@cryptools.click</p>
                   </div>
-                </a>
+                </div>
 
-                <a
-                  href="https://twitter.com/cryptools"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-                >
-                  <div className="p-2 bg-blue-500 rounded-lg">
-                    <Twitter className="w-5 h-5 text-white" />
+                <div className="flex items-center gap-4 p-6 bg-accent-50 dark:bg-accent-900/20 rounded-2xl border border-accent-200 dark:border-accent-800 shadow-lg hover:shadow-xl transition-shadow">
+                  <div className="p-3 bg-accent rounded-xl shadow-lg">
+                    <Clock className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 dark:text-white">Twitter</h3>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm">Follow for updates</p>
+                    <h3 className="text-lg font-bold text-light-text dark:text-dark-text">Response Time</h3>
+                    <p className="text-light-text-muted dark:text-dark-text-muted">Usually within 24 hours</p>
                   </div>
-                </a>
+                </div>
               </div>
             </div>
 
             {/* FAQ */}
-            <div className="bg-white dark:bg-dark-surface rounded-2xl shadow-lg border border-light-border dark:border-dark-border p-6 sm:p-8">
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                Frequently Asked Questions
-              </h2>
+            <div className="bg-light-surface dark:bg-dark-surface rounded-3xl shadow-2xl border border-light-border dark:border-dark-border p-8 sm:p-10">
+              <div className="flex items-center gap-3 mb-8">
+                <div className="p-3 bg-gradient-to-br from-accent to-accent-dark rounded-xl shadow-lg">
+                  <Zap className="w-6 h-6 text-white" />
+                </div>
+                <h2 className="text-3xl font-bold text-light-text dark:text-dark-text">
+                  Frequently Asked Questions
+                </h2>
+              </div>
               
-              <div className="space-y-4">
-                <div>
-                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
+              <div className="space-y-6">
+                <div className="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-xl border border-primary-200 dark:border-primary-800">
+                  <h3 className="text-lg font-bold text-light-text dark:text-dark-text mb-2">
                     Is Cryptools free to use?
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">
+                  <p className="text-light-text-muted dark:text-dark-text-muted">
                     Yes, Cryptools is completely free and open source.
                   </p>
                 </div>
 
-                <div>
-                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
+                <div className="p-4 bg-success-50 dark:bg-success-900/20 rounded-xl border border-success-200 dark:border-success-800">
+                  <h3 className="text-lg font-bold text-light-text dark:text-dark-text mb-2">
                     Is my data secure?
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">
+                  <p className="text-light-text-muted dark:text-dark-text-muted">
                     All processing happens locally in your browser. We don't collect any data.
                   </p>
                 </div>
 
-                <div>
-                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
+                <div className="p-4 bg-warning-50 dark:bg-warning-900/20 rounded-xl border border-warning-200 dark:border-warning-800">
+                  <h3 className="text-lg font-bold text-light-text dark:text-dark-text mb-2">
                     Can I use this for production?
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">
+                  <p className="text-light-text-muted dark:text-dark-text-muted">
                     No, this is for educational purposes only. Use proper crypto libraries for production.
                   </p>
                 </div>
