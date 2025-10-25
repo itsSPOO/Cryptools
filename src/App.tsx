@@ -163,7 +163,7 @@ function App() {
         </main>
         
         {/* Right Sidebar Ads - Hidden on mobile and tablet */}
-        <aside className="hidden xl:flex flex-col w-80 bg-white dark:bg-dark-surface border-l border-light-border dark:border-dark-border">
+        <aside className="hidden xl:flex flex-col w-96 bg-white dark:bg-dark-surface border-l border-light-border dark:border-dark-border">
           <div className="flex-1 overflow-y-auto" style={{ padding: '16px' }}>
             {/* Top Ad */}
             <AdBannerRightSidebar1 />
