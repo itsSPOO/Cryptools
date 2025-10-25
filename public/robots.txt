@@ -7,7 +7,7 @@ Disallow: /*.json$
 Crawl-delay: 1
 
 # Sitemap location
-Sitemap: https://cryptools.vercel.app/sitemap.xml
+Sitemap: https://cryptools.click/sitemap.xml
 
 # Google bots
 User-agent: Googlebot

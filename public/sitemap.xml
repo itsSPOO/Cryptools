@@ -6,7 +6,7 @@
   
   <!-- Homepage -->
   <url>
-    <loc>https://cryptools.vercel.app/</loc>
+    <loc>https://cryptools.click/</loc>
     <lastmod>2024-10-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -14,7 +14,7 @@
   
   <!-- Base64 Tool -->
   <url>
-    <loc>https://cryptools.vercel.app/?tool=base64</loc>
+    <loc>https://cryptools.click/?tool=base64</loc>
     <lastmod>2024-10-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -22,7 +22,7 @@
   
   <!-- Binary Converter -->
   <url>
-    <loc>https://cryptools.vercel.app/?tool=binary</loc>
+    <loc>https://cryptools.click/?tool=binary</loc>
     <lastmod>2024-10-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -30,7 +30,7 @@
   
   <!-- URL Encoder -->
   <url>
-    <loc>https://cryptools.vercel.app/?tool=url</loc>
+    <loc>https://cryptools.click/?tool=url</loc>
     <lastmod>2024-10-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -38,7 +38,7 @@
   
   <!-- Hex Converter -->
   <url>
-    <loc>https://cryptools.vercel.app/?tool=hex</loc>
+    <loc>https://cryptools.click/?tool=hex</loc>
     <lastmod>2024-10-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -46,7 +46,7 @@
   
   <!-- MD5 Hash -->
   <url>
-    <loc>https://cryptools.vercel.app/?tool=md5</loc>
+    <loc>https://cryptools.click/?tool=md5</loc>
     <lastmod>2024-10-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -54,7 +54,7 @@
   
   <!-- SHA-1 Hash -->
   <url>
-    <loc>https://cryptools.vercel.app/?tool=sha1</loc>
+    <loc>https://cryptools.click/?tool=sha1</loc>
     <lastmod>2024-10-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -62,7 +62,7 @@
   
   <!-- SHA-256 Hash -->
   <url>
-    <loc>https://cryptools.vercel.app/?tool=sha256</loc>
+    <loc>https://cryptools.click/?tool=sha256</loc>
     <lastmod>2024-10-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -70,7 +70,7 @@
   
   <!-- Caesar Cipher -->
   <url>
-    <loc>https://cryptools.vercel.app/?tool=caesar</loc>
+    <loc>https://cryptools.click/?tool=caesar</loc>
     <lastmod>2024-10-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -78,7 +78,7 @@
   
   <!-- ROT13 -->
   <url>
-    <loc>https://cryptools.vercel.app/?tool=rot13</loc>
+    <loc>https://cryptools.click/?tool=rot13</loc>
     <lastmod>2024-10-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -86,7 +86,7 @@
   
   <!-- Vigenere Cipher -->
   <url>
-    <loc>https://cryptools.vercel.app/?tool=vigenere</loc>
+    <loc>https://cryptools.click/?tool=vigenere</loc>
     <lastmod>2024-10-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -94,7 +94,7 @@
   
   <!-- Atbash Cipher -->
   <url>
-    <loc>https://cryptools.vercel.app/?tool=atbash</loc>
+    <loc>https://cryptools.click/?tool=atbash</loc>
     <lastmod>2024-10-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -102,7 +102,7 @@
   
   <!-- Leet Speak -->
   <url>
-    <loc>https://cryptools.vercel.app/?tool=leet</loc>
+    <loc>https://cryptools.click/?tool=leet</loc>
     <lastmod>2024-10-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -110,7 +110,7 @@
   
   <!-- Custom Cipher -->
   <url>
-    <loc>https://cryptools.vercel.app/?tool=custom</loc>
+    <loc>https://cryptools.click/?tool=custom</loc>
     <lastmod>2024-10-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -118,7 +118,7 @@
   
   <!-- Password Generator -->
   <url>
-    <loc>https://cryptools.vercel.app/?tool=password</loc>
+    <loc>https://cryptools.click/?tool=password</loc>
     <lastmod>2024-10-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -126,7 +126,7 @@
   
   <!-- Privacy Policy -->
   <url>
-    <loc>https://cryptools.vercel.app/privacy-policy.html</loc>
+    <loc>https://cryptools.click/privacy-policy.html</loc>
     <lastmod>2024-10-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -134,7 +134,7 @@
   
   <!-- Terms of Use -->
   <url>
-    <loc>https://cryptools.vercel.app/terms-of-use.html</loc>
+    <loc>https://cryptools.click/terms-of-use.html</loc>
     <lastmod>2024-10-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -142,7 +142,23 @@
   
   <!-- Contact -->
   <url>
-    <loc>https://cryptools.vercel.app/contact.html</loc>
+    <loc>https://cryptools.click/contact.html</loc>
+    <lastmod>2024-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- About Us -->
+  <url>
+    <loc>https://cryptools.click/about.html</loc>
+    <lastmod>2024-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Disclaimer -->
+  <url>
+    <loc>https://cryptools.click/disclaimer.html</loc>
     <lastmod>2024-10-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

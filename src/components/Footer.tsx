@@ -76,7 +76,16 @@ export const Footer: React.FC = () => {
             © {currentYear} <span className="font-semibold text-primary">Cryptools</span> - All rights reserved
           </div>
           
-          <div className="flex items-center gap-2 sm:gap-4">
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4">
+            <a
+              href="/about.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors text-xs sm:text-sm"
+            >
+              About Us
+            </a>
+            <span className="text-gray-300 dark:text-gray-700 hidden sm:inline">•</span>
             <a
               href="/privacy-policy.html"
               target="_blank"
@@ -93,6 +102,15 @@ export const Footer: React.FC = () => {
               className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors text-xs sm:text-sm"
             >
               Terms of Use
+            </a>
+            <span className="text-gray-300 dark:text-gray-700 hidden sm:inline">•</span>
+            <a
+              href="/disclaimer.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors text-xs sm:text-sm"
+            >
+              Disclaimer
             </a>
             <span className="text-gray-300 dark:text-gray-700 hidden sm:inline">•</span>
             <a
