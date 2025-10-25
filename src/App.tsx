@@ -50,7 +50,7 @@ const toolComponents: Record<string, React.FC> = {
 };
 
 function App() {
-  const { activeTool, theme, toggleTheme } = useStore();
+  const { activeTool, theme, toggleTheme, isSidebarCollapsed, toggleSidebar } = useStore();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Apply theme to document
@@ -70,6 +70,11 @@ function App() {
         e.preventDefault();
         toggleTheme();
       }
+      // Ctrl/Cmd + B for sidebar toggle
+      if ((e.ctrlKey || e.metaKey) && e.key === 'b') {
+        e.preventDefault();
+        toggleSidebar();
+      }
       // Escape to close mobile menu
       if (e.key === 'Escape' && isMobileMenuOpen) {
         setIsMobileMenuOpen(false);
@@ -78,7 +83,7 @@ function App() {
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [toggleTheme, isMobileMenuOpen]);
+  }, [toggleTheme, toggleSidebar, isMobileMenuOpen]);
 
   // Close mobile menu when tool is selected
   useEffect(() => {
@@ -133,10 +138,10 @@ function App() {
            ${isMobileMenuOpen ? 'translate-x-0 block mobile-sidebar-visible' : '-translate-x-full hidden mobile-sidebar-hidden'}
            lg:translate-x-0 lg:block
            fixed lg:static inset-y-0 left-0 z-50 lg:z-auto
-           w-64 h-full bg-white dark:bg-dark-surface 
+           ${isSidebarCollapsed ? 'w-16' : 'w-80'} h-full bg-white dark:bg-dark-surface 
            border-r border-light-border dark:border-dark-border 
            overflow-y-auto mobile-scroll mobile-optimized
-           transition-transform duration-300 ease-in-out
+           transition-all duration-300 ease-in-out
          `}>
           <Sidebar />
         </aside>

@@ -22,4 +22,5 @@ export interface AppState {
   presets: ToolPreset[];
   favorites: string[];
   consentGiven: boolean;
+  isSidebarCollapsed: boolean;
 }

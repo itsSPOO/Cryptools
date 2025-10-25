@@ -11,7 +11,7 @@ interface Shortcut {
 }
 
 export const KeyboardShortcuts: React.FC = () => {
-  const { setActiveTool, toggleTheme } = useStore();
+  const { setActiveTool, toggleTheme, toggleSidebar } = useStore();
   const [showHelp, setShowHelp] = useState(false);
   const [shortcuts, setShortcuts] = useState<Shortcut[]>([]);
 
@@ -37,6 +37,12 @@ export const KeyboardShortcuts: React.FC = () => {
         description: 'Toggle Dark/Light Mode',
         category: 'General',
         action: toggleTheme,
+      },
+      {
+        key: 'Ctrl/Cmd + B',
+        description: 'Toggle Sidebar',
+        category: 'General',
+        action: toggleSidebar,
       },
       {
         key: 'Ctrl/Cmd + K',

@@ -10,6 +10,8 @@ interface StoreState extends AppState {
   toggleFavorite: (toolId: string) => void;
   isFavorite: (toolId: string) => boolean;
   setConsent: (consent: boolean) => void;
+  toggleSidebar: () => void;
+  isSidebarCollapsed: boolean;
 }
 
 // Load initial state from localStorage
@@ -39,24 +41,25 @@ export const useStore = create<StoreState>((set, get) => ({
   presets: initialState.presets || [],
   favorites: initialState.favorites || [],
   consentGiven: initialState.consentGiven || false,
+  isSidebarCollapsed: initialState.isSidebarCollapsed || false,
 
   setActiveTool: (toolId) => set({ activeTool: toolId }),
 
   toggleTheme: () => set((state) => {
     const newTheme = state.theme === 'dark' ? 'light' : 'dark';
-    saveState({ theme: newTheme, presets: state.presets, favorites: state.favorites, consentGiven: state.consentGiven });
+    saveState({ theme: newTheme, presets: state.presets, favorites: state.favorites, consentGiven: state.consentGiven, isSidebarCollapsed: state.isSidebarCollapsed });
     return { theme: newTheme };
   }),
 
   addPreset: (preset) => set((state) => {
     const newPresets = [...state.presets, preset];
-    saveState({ theme: state.theme, presets: newPresets, favorites: state.favorites, consentGiven: state.consentGiven });
+    saveState({ theme: state.theme, presets: newPresets, favorites: state.favorites, consentGiven: state.consentGiven, isSidebarCollapsed: state.isSidebarCollapsed });
     return { presets: newPresets };
   }),
 
   removePreset: (presetId) => set((state) => {
     const newPresets = state.presets.filter((p) => p.id !== presetId);
-    saveState({ theme: state.theme, presets: newPresets, favorites: state.favorites, consentGiven: state.consentGiven });
+    saveState({ theme: state.theme, presets: newPresets, favorites: state.favorites, consentGiven: state.consentGiven, isSidebarCollapsed: state.isSidebarCollapsed });
     return { presets: newPresets };
   }),
 
@@ -64,7 +67,7 @@ export const useStore = create<StoreState>((set, get) => ({
     const newPresets = state.presets.map((p) =>
       p.id === presetId ? { ...p, ...updates } : p
     );
-    saveState({ theme: state.theme, presets: newPresets, favorites: state.favorites, consentGiven: state.consentGiven });
+    saveState({ theme: state.theme, presets: newPresets, favorites: state.favorites, consentGiven: state.consentGiven, isSidebarCollapsed: state.isSidebarCollapsed });
     return { presets: newPresets };
   }),
 
@@ -72,7 +75,7 @@ export const useStore = create<StoreState>((set, get) => ({
     const newFavorites = state.favorites.includes(toolId)
       ? state.favorites.filter(id => id !== toolId)
       : [...state.favorites, toolId];
-    saveState({ theme: state.theme, presets: state.presets, favorites: newFavorites, consentGiven: state.consentGiven });
+    saveState({ theme: state.theme, presets: state.presets, favorites: newFavorites, consentGiven: state.consentGiven, isSidebarCollapsed: state.isSidebarCollapsed });
     return { favorites: newFavorites };
   }),
 
@@ -81,7 +84,13 @@ export const useStore = create<StoreState>((set, get) => ({
   },
 
   setConsent: (consent) => set((state) => {
-    saveState({ theme: state.theme, presets: state.presets, favorites: state.favorites, consentGiven: consent });
+    saveState({ theme: state.theme, presets: state.presets, favorites: state.favorites, consentGiven: consent, isSidebarCollapsed: state.isSidebarCollapsed });
     return { consentGiven: consent };
+  }),
+
+  toggleSidebar: () => set((state) => {
+    const newCollapsed = !state.isSidebarCollapsed;
+    saveState({ theme: state.theme, presets: state.presets, favorites: state.favorites, consentGiven: state.consentGiven, isSidebarCollapsed: newCollapsed });
+    return { isSidebarCollapsed: newCollapsed };
   }),
 }));
