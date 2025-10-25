@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Modern web app for encryption, hashing, and text conversion tools",
   "type": "module",
-  "homepage": "https://cryptools.click",
+  "homepage": "https://itsspoo.github.io/Cryptools",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
