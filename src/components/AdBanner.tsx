@@ -79,7 +79,7 @@ export const AdBannerRightSidebar1: React.FC = () => (
     <AdBanner 
       slot="2233445566" // Replace with your slot ID
       format="auto"
-      className="w-full min-h-[300px] bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center"
+      className="w-full min-h-[250px] bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center"
     />
   </div>
 );
@@ -90,7 +90,7 @@ export const AdBannerRightSidebar2: React.FC = () => (
     <AdBanner 
       slot="3344556677" // Replace with your slot ID
       format="auto"
-      className="w-full min-h-[300px] bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center"
+      className="w-full min-h-[250px] bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center"
     />
   </div>
 );
@@ -101,7 +101,7 @@ export const AdBannerRightSidebar3: React.FC = () => (
     <AdBanner 
       slot="4455667788" // Replace with your slot ID
       format="auto"
-      className="w-full min-h-[300px] bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center"
+      className="w-full min-h-[250px] bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center"
     />
   </div>
 );
