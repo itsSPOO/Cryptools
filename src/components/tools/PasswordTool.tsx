@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useMemo } from 'react';
-import { ToolCard, InputField, OutputField, Button } from '../ToolCard';
+import { ToolCard, InputField, Button } from '../ToolCard';
 import { generatePassword, calculatePasswordStrength, type PasswordOptions } from '@/utils/cryptoUtils';
-import { Copy, RefreshCw, Eye, EyeOff, Shield, ShieldCheck, ShieldAlert, Download, CheckCircle, AlertTriangle, XCircle } from 'lucide-react';
+import { Copy, RefreshCw, Eye, EyeOff, Shield, ShieldCheck, Download, CheckCircle, AlertTriangle, XCircle } from 'lucide-react';
 
 export const PasswordTool: React.FC = () => {
   const [password, setPassword] = useState('');
@@ -155,7 +155,6 @@ console.log(password);`;
               rows={2}
               error={error}
               readOnly
-              type={showPassword ? 'text' : 'password'}
             />
             <button
               onClick={() => setShowPassword(!showPassword)}

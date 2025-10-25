@@ -6,7 +6,7 @@ export interface Tool {
   icon: string;
 }
 
-export type ToolCategory = 'encryption' | 'hash' | 'conversions' | 'ciphers' | 'custom';
+export type ToolCategory = 'encryption' | 'hash' | 'conversions' | 'ciphers' | 'custom' | 'legal';
 
 export interface ToolPreset {
   id: string;

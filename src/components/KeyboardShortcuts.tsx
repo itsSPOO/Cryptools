@@ -11,7 +11,7 @@ interface Shortcut {
 }
 
 export const KeyboardShortcuts: React.FC = () => {
-  const { activeTool, setActiveTool, toggleTheme } = useStore();
+  const { setActiveTool, toggleTheme } = useStore();
   const [showHelp, setShowHelp] = useState(false);
   const [shortcuts, setShortcuts] = useState<Shortcut[]>([]);
 
