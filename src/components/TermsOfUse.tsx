@@ -1,5 +1,5 @@
 import React from 'react';
-import { FileText, AlertTriangle, Shield, Code, Users, Gavel, Heart, Zap, Globe, CheckCircle } from 'lucide-react';
+import { FileText, AlertTriangle, Shield, Code, Gavel, Heart, Zap, CheckCircle } from 'lucide-react';
 
 export const TermsOfUse: React.FC = () => {
   return (
