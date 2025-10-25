@@ -1,10 +1,8 @@
 import React from 'react';
 import { Shield, Zap } from 'lucide-react';
-import { useStore } from '@/store/useStore';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
-  const { setActiveTool } = useStore();
 
   return (
     <footer className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-dark-surface dark:to-dark-bg border-t border-light-border dark:border-dark-border">
@@ -79,26 +77,32 @@ export const Footer: React.FC = () => {
           </div>
           
           <div className="flex items-center gap-2 sm:gap-4">
-            <button
-              onClick={() => setActiveTool('privacy')}
+            <a
+              href="/privacy-policy.html"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors text-xs sm:text-sm"
             >
               Privacy Policy
-            </button>
+            </a>
             <span className="text-gray-300 dark:text-gray-700 hidden sm:inline">•</span>
-            <button
-              onClick={() => setActiveTool('terms')}
+            <a
+              href="/terms-of-use.html"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors text-xs sm:text-sm"
             >
               Terms of Use
-            </button>
+            </a>
             <span className="text-gray-300 dark:text-gray-700 hidden sm:inline">•</span>
-            <button
-              onClick={() => setActiveTool('contact')}
+            <a
+              href="/contact.html"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors text-xs sm:text-sm"
             >
               Contact
-            </button>
+            </a>
           </div>
         </div>
 
