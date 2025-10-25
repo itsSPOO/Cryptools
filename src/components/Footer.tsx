@@ -1,8 +1,10 @@
 import React from 'react';
 import { Shield, Zap } from 'lucide-react';
+import { useStore } from '@/store/useStore';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
+  const { setActiveTool } = useStore();
 
   return (
     <footer className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-dark-surface dark:to-dark-bg border-t border-light-border dark:border-dark-border">
@@ -77,26 +79,26 @@ export const Footer: React.FC = () => {
           </div>
           
           <div className="flex items-center gap-2 sm:gap-4">
-            <a
-              href="#"
+            <button
+              onClick={() => setActiveTool('privacy')}
               className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors text-xs sm:text-sm"
             >
               Privacy Policy
-            </a>
+            </button>
             <span className="text-gray-300 dark:text-gray-700 hidden sm:inline">•</span>
-            <a
-              href="#"
+            <button
+              onClick={() => setActiveTool('terms')}
               className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors text-xs sm:text-sm"
             >
               Terms of Use
-            </a>
+            </button>
             <span className="text-gray-300 dark:text-gray-700 hidden sm:inline">•</span>
-            <a
-              href="#"
+            <button
+              onClick={() => setActiveTool('contact')}
               className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors text-xs sm:text-sm"
             >
               Contact
-            </a>
+            </button>
           </div>
         </div>
 

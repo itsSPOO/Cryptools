@@ -40,21 +40,21 @@ const SidebarComponent: React.FC = () => {
       <div className="p-3 sm:p-4">
         {/* Search Bar */}
         <div className="mb-4">
-          <div className="relative">
-            <Icons.Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+          <div className="relative group">
+            <Icons.Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 dark:text-gray-400 group-focus-within:text-primary transition-colors" />
             <input
               type="text"
               placeholder="Search tools..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-9 py-3 sm:py-4 bg-gradient-to-r from-light-surface to-light-surface-elevated dark:from-dark-surface-elevated dark:to-dark-surface border border-light-border dark:border-dark-border rounded-xl text-sm text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all touch-target shadow-sm hover:shadow-md"
+              className="search-input w-full pl-9 pr-9 py-3 sm:py-4 bg-white dark:bg-dark-surface border border-gray-200 dark:border-gray-700 rounded-xl text-sm text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all touch-target shadow-sm hover:shadow-md focus:shadow-lg focus:bg-white dark:focus:bg-dark-surface"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery('')}
-                className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 rounded transition-colors"
+                className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200"
               >
-                <Icons.X className="w-4 h-4" />
+                <Icons.X className="w-3 h-3" />
               </button>
             )}
           </div>

@@ -25,6 +25,9 @@ import { VigenereTool } from '@/components/tools/VigenereTool';
 import { AtbashTool } from '@/components/tools/AtbashTool';
 import { CustomCipherTool } from '@/components/tools/CustomCipherTool';
 import { PasswordTool } from '@/components/tools/PasswordTool';
+import { PrivacyPolicy } from '@/components/PrivacyPolicy';
+import { TermsOfUse } from '@/components/TermsOfUse';
+import { Contact } from '@/components/Contact';
 
 const toolComponents: Record<string, React.FC> = {
   base64: Base64Tool,
@@ -41,6 +44,9 @@ const toolComponents: Record<string, React.FC> = {
   atbash: AtbashTool,
   custom: CustomCipherTool,
   password: PasswordTool,
+  privacy: PrivacyPolicy,
+  terms: TermsOfUse,
+  contact: Contact,
 };
 
 function App() {
