@@ -20,17 +20,19 @@ export const AdBanner: React.FC<AdBannerProps> = ({
     } catch (err) {
       console.error('AdSense error:', err);
     }
-  }, []);
+    // Cleanup: Google AdSense doesn't require explicit cleanup
+  }, [slot]);
 
   return (
     <div className={`ad-container ${className}`}>
+      {/* Google AdSense Advertisement */}
       <ins
         className="adsbygoogle"
         style={{ display: 'block' }}
         data-ad-client="ca-pub-9656748692315675"
         data-ad-slot={slot}
         data-ad-format={format}
-        data-full-width-responsive={responsive.toString()}
+        data-full-width-responsive={responsive ? 'true' : 'false'}
       />
     </div>
   );
@@ -41,7 +43,7 @@ export const AdBannerHorizontal: React.FC = () => (
   <div className="w-full flex justify-center my-4 sm:my-6">
     <div className="w-full max-w-4xl mx-auto px-2 sm:px-4">
       <AdBanner 
-        slot="8665748688" // Wide banner slot
+        slot="8665748688" // ⚠️ يجب إنشاء Ad Unit منفصل في AdSense للحصول على Slot ID جديد
         format="auto"
         className="w-full min-h-[80px] sm:min-h-[90px] bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center"
       />
@@ -65,8 +67,8 @@ export const AdBannerInFeed: React.FC = () => (
   <div className="w-full flex justify-center my-6 sm:my-8">
     <div className="w-full max-w-4xl mx-auto px-2 sm:px-4">
       <AdBanner 
-        slot="8665748688" // Wide banner slot
-        format="fluid"
+        slot="8665748688" // ⚠️ يجب إنشاء Ad Unit منفصل في AdSense للحصول على Slot ID جديد (مختلف عن Horizontal)
+        format="auto" // Changed from 'fluid' to 'auto' for better compatibility
         className="w-full min-h-[100px] sm:min-h-[120px] bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center"
       />
     </div>
@@ -75,33 +77,33 @@ export const AdBannerInFeed: React.FC = () => (
 
 // Right Sidebar Ad 1 (Top)
 export const AdBannerRightSidebar1: React.FC = () => (
-  <div className="w-full my-4 px-2">
+  <div className="w-full" style={{ marginBottom: '24px' }}>
     <AdBanner 
-      slot="8186402381" // Square ad slot
+      slot="8186402381" // ⚠️ يجب إنشاء Ad Unit منفصل في AdSense
       format="auto"
-      className="w-full min-h-[250px] bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center"
+      className="w-full min-h-[250px] bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700"
     />
   </div>
 );
 
 // Right Sidebar Ad 2 (Middle)
 export const AdBannerRightSidebar2: React.FC = () => (
-  <div className="w-full my-4 px-2">
+  <div className="w-full" style={{ marginBottom: '24px' }}>
     <AdBanner 
-      slot="8186402381" // Square ad slot
+      slot="8186402381" // ⚠️ يجب إنشاء Ad Unit منفصل في AdSense
       format="auto"
-      className="w-full min-h-[250px] bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center"
+      className="w-full min-h-[250px] bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700"
     />
   </div>
 );
 
 // Right Sidebar Ad 3 (Bottom)
 export const AdBannerRightSidebar3: React.FC = () => (
-  <div className="w-full my-4 px-2">
+  <div className="w-full" style={{ marginBottom: '24px' }}>
     <AdBanner 
-      slot="8186402381" // Square ad slot
+      slot="8186402381" // ⚠️ يجب إنشاء Ad Unit منفصل في AdSense
       format="auto"
-      className="w-full min-h-[250px] bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center"
+      className="w-full min-h-[250px] bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700"
     />
   </div>
 );

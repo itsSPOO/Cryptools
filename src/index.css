@@ -2,6 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
+/* AdSense Ads Styling - Google Compliant */
+.ad-container {
+  min-width: 320px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.adsbygoogle {
+  display: block !important;
+  text-align: center;
+  background-color: transparent;
+  width: 100%;
+  min-height: 250px;
+  overflow: hidden;
+}
+
+/* Ensure ads are not too small - Google AdSense standards */
+.ad-container .adsbygoogle {
+  min-width: 320px;
+  min-height: 250px;
+}
+
+/* Prevent ad container from being smaller than Google requirements */
+.ad-container {
+  box-sizing: border-box;
+}
+
+/* Make sure sidebar ads take full width */
+.ad-container > .adsbygoogle {
+  width: 100%;
+  max-width: 100%;
+}
+
 /* Custom styles for password generator */
 .slider {
   -webkit-appearance: none;
@@ -81,22 +117,30 @@ input:focus {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
   }
 
-  /* Custom scrollbar */
+  /* Hide scrollbar completely */
   ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+    width: 0px;
+    height: 0px;
+    display: none;
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-light-surface dark:bg-dark-surface;
+    display: none;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-gray-300 dark:bg-gray-700 rounded-full;
+    display: none;
   }
 
-  ::-webkit-scrollbar-thumb:hover {
-    @apply bg-gray-400 dark:bg-gray-600;
+  /* Hide scrollbar for Firefox */
+  * {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  /* Hide scrollbar for IE and Edge */
+  * {
+    -ms-overflow-style: none;
   }
 
   /* Focus visible for accessibility */

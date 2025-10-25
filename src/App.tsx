@@ -4,7 +4,6 @@ import { Sidebar } from '@/components/Sidebar';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { WelcomeScreen } from '@/components/WelcomeScreen';
-import { ScrollToTop } from '@/components/ScrollToTop';
 import { KeyboardShortcuts } from '@/components/KeyboardShortcuts';
 import { AdBannerHorizontal, AdBannerInFeed, AdBannerRightSidebar1, AdBannerRightSidebar2, AdBannerRightSidebar3 } from '@/components/AdBanner';
 import { Menu, X } from 'lucide-react';
@@ -147,10 +146,7 @@ function App() {
         
         <main className="flex-1 overflow-y-auto mobile-scroll mobile-optimized">
           <div className="p-3 sm:p-6 lg:p-8">
-            {/* Top Ad Banner - Responsive */}
-            <div className="mb-4 sm:mb-6">
-              <AdBannerHorizontal />
-            </div>
+            {/* Top Ad Banner removed - now shown at bottom of Welcome Screen */}
             
             <div className="max-w-5xl mx-auto mb-6 sm:mb-8">
               {ActiveToolComponent ? (
@@ -173,8 +169,8 @@ function App() {
         </main>
         
         {/* Right Sidebar Ads - Hidden on mobile and tablet */}
-        <aside className="hidden xl:block w-80 bg-white dark:bg-dark-surface border-l border-light-border dark:border-dark-border overflow-y-auto">
-          <div className="p-4 space-y-6">
+        <aside className="hidden xl:flex flex-col w-80 bg-white dark:bg-dark-surface border-l border-light-border dark:border-dark-border">
+          <div className="flex-1 overflow-y-auto" style={{ padding: '16px' }}>
             {/* Top Ad */}
             <AdBannerRightSidebar1 />
             
@@ -187,7 +183,6 @@ function App() {
         </aside>
       </div>
 
-       <ScrollToTop />
        <KeyboardShortcuts />
     </div>
   );

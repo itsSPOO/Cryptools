@@ -1,5 +1,6 @@
 import React from 'react';
 import { Shield, Key, Zap, Code2 } from 'lucide-react';
+import { AdBannerHorizontal } from './AdBanner';
 
 export const WelcomeScreen: React.FC = () => {
 
@@ -72,6 +73,10 @@ export const WelcomeScreen: React.FC = () => {
           </div>
         </div>
 
+        {/* Ad Banner at bottom of welcome screen */}
+        <div className="mt-8 sm:mt-12">
+          <AdBannerHorizontal />
+        </div>
 
       </div>
     </div>

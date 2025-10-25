@@ -83,7 +83,7 @@ export const PrivacyPolicy: React.FC = () => {
                   </div>
                   <div className="flex items-center gap-2 text-success-600 dark:text-success-400">
                     <div className="w-2 h-2 bg-success rounded-full"></div>
-                    <span>No usage analytics or tracking</span>
+                    <span>No user accounts required</span>
                   </div>
                 </div>
               </div>
