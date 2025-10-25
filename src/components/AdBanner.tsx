@@ -72,3 +72,36 @@ export const AdBannerInFeed: React.FC = () => (
     </div>
   </div>
 );
+
+// Right Sidebar Ad 1 (Top)
+export const AdBannerRightSidebar1: React.FC = () => (
+  <div className="w-full my-4 px-2">
+    <AdBanner 
+      slot="2233445566" // Replace with your slot ID
+      format="auto"
+      className="w-full min-h-[200px] bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center"
+    />
+  </div>
+);
+
+// Right Sidebar Ad 2 (Middle)
+export const AdBannerRightSidebar2: React.FC = () => (
+  <div className="w-full my-4 px-2">
+    <AdBanner 
+      slot="3344556677" // Replace with your slot ID
+      format="auto"
+      className="w-full min-h-[200px] bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center"
+    />
+  </div>
+);
+
+// Right Sidebar Ad 3 (Bottom)
+export const AdBannerRightSidebar3: React.FC = () => (
+  <div className="w-full my-4 px-2">
+    <AdBanner 
+      slot="4455667788" // Replace with your slot ID
+      format="auto"
+      className="w-full min-h-[200px] bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center"
+    />
+  </div>
+);

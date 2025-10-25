@@ -7,7 +7,7 @@ import { WelcomeScreen } from '@/components/WelcomeScreen';
 import { ConsentBanner } from '@/components/ConsentBanner';
 import { ScrollToTop } from '@/components/ScrollToTop';
 import { KeyboardShortcuts } from '@/components/KeyboardShortcuts';
-import { AdBannerHorizontal, AdBannerInFeed, AdBannerSidebar } from '@/components/AdBanner';
+import { AdBannerHorizontal, AdBannerInFeed, AdBannerRightSidebar1, AdBannerRightSidebar2, AdBannerRightSidebar3 } from '@/components/AdBanner';
 import { Menu, X } from 'lucide-react';
 
 // Tool Components
@@ -173,10 +173,17 @@ function App() {
           </div>
         </main>
         
-        {/* Right Sidebar Ad - Hidden on mobile and tablet */}
+        {/* Right Sidebar Ads - Hidden on mobile and tablet */}
         <aside className="hidden xl:block w-80 bg-white dark:bg-dark-surface border-l border-light-border dark:border-dark-border overflow-y-auto">
-          <div className="p-4">
-            <AdBannerSidebar />
+          <div className="p-4 space-y-6">
+            {/* Top Ad */}
+            <AdBannerRightSidebar1 />
+            
+            {/* Middle Ad */}
+            <AdBannerRightSidebar2 />
+            
+            {/* Bottom Ad */}
+            <AdBannerRightSidebar3 />
           </div>
         </aside>
       </div>
