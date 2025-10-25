@@ -174,7 +174,7 @@ function App() {
         </main>
         
         {/* Right Sidebar Ads - Hidden on mobile and tablet */}
-        <aside className="hidden xl:block w-80 bg-white dark:bg-dark-surface border-l border-light-border dark:border-dark-border overflow-y-auto">
+        <aside className="hidden xl:block w-96 bg-white dark:bg-dark-surface border-l border-light-border dark:border-dark-border overflow-y-auto">
           <div className="p-4 space-y-6">
             {/* Top Ad */}
             <AdBannerRightSidebar1 />
