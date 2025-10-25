@@ -15,12 +15,26 @@ export const Contact: React.FC = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      const form = e.target as HTMLFormElement;
+      const formData = new FormData(form);
+      
+      const response = await fetch('https://formsubmit.co/contact@cryptools.click', {
+        method: 'POST',
+        body: formData,
+      });
+      
+      if (response.ok) {
+        setIsSubmitting(false);
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        throw new Error('Form submission failed');
+      }
+    } catch (error) {
       setIsSubmitting(false);
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    }, 2000);
+      setSubmitStatus('error');
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -66,7 +80,12 @@ export const Contact: React.FC = () => {
                 </h2>
               </div>
               
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form action="https://formsubmit.co/contact@cryptools.click" method="POST" onSubmit={handleSubmit} className="space-y-6">
+                {/* FormSubmit Configuration */}
+                <input type="hidden" name="_next" value="https://cryptools.click/contact" />
+                <input type="hidden" name="_subject" value="New Contact Form Submission - Cryptools" />
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_template" value="table" />
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-semibold text-light-text dark:text-dark-text mb-3">
