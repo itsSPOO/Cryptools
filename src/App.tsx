@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useStore } from '@/store/useStore';
 import { Sidebar } from '@/components/Sidebar';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { WelcomeScreen } from '@/components/WelcomeScreen';
 import { KeyboardShortcuts } from '@/components/KeyboardShortcuts';
+import { SEOHead } from '@/components/SEOHead';
+import { CookieConsent } from '@/components/CookieConsent';
 import { AdBannerInFeed, AdBannerRightSidebar1, AdBannerRightSidebar2, AdBannerRightSidebar3 } from '@/components/AdBanner';
+import { urlToToolMap } from '@/config/seo';
 import { Menu, X } from 'lucide-react';
 
 // Tool Components
@@ -42,8 +46,24 @@ const toolComponents: Record<string, React.FC> = {
 };
 
 function App() {
-  const { activeTool, theme, toggleTheme, isSidebarCollapsed, toggleSidebar } = useStore();
+  const { activeTool, setActiveTool, theme, toggleTheme, isSidebarCollapsed, toggleSidebar } = useStore();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+
+  // Sync URL with active tool
+  useEffect(() => {
+    const path = location.pathname;
+    const toolId = urlToToolMap[path];
+    
+    if (toolId && toolId !== activeTool) {
+      setActiveTool(toolId);
+    } else if (path === '/' && activeTool) {
+      setActiveTool(null);
+    }
+  }, [location.pathname, activeTool, setActiveTool]);
+
+  // Get current page for SEO
+  const currentPage = activeTool || 'home';
 
   // Apply theme to document
   useEffect(() => {
@@ -100,7 +120,9 @@ function App() {
   const ActiveToolComponent = activeTool ? toolComponents[activeTool] : null;
 
   return (
-    <div className="flex flex-col h-screen bg-gradient-to-br from-light-bg via-light-surface-elevated to-light-bg dark:from-dark-bg dark:via-dark-surface-elevated dark:to-dark-bg font-sans mobile-viewport">
+    <>
+      <SEOHead page={currentPage} />
+      <div className="flex flex-col h-screen bg-gradient-to-br from-light-bg via-light-surface-elevated to-light-bg dark:from-dark-bg dark:via-dark-surface-elevated dark:to-dark-bg font-sans mobile-viewport">
       <div className="sticky top-0 z-50">
         <Header />
       </div>
@@ -180,7 +202,9 @@ function App() {
       </div>
 
        <KeyboardShortcuts />
+       <CookieConsent />
     </div>
+    </>
   );
 }
 

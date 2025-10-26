@@ -1,12 +1,20 @@
 import React, { useState, useMemo, memo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useStore } from '@/store/useStore';
 import { tools, categoryNames } from '@/data/tools';
+import { toolUrlMap } from '@/config/seo';
 import * as Icons from 'lucide-react';
 import { clsx } from 'clsx';
 
 const SidebarComponent: React.FC = () => {
   const { activeTool, setActiveTool, toggleFavorite, isFavorite, isSidebarCollapsed, toggleSidebar } = useStore();
   const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate();
+
+  const handleToolClick = (toolId: string) => {
+    setActiveTool(toolId);
+    navigate(toolUrlMap[toolId] || '/');
+  };
 
   // Memoize filtered tools
   const filteredTools = useMemo(() => {
@@ -99,7 +107,7 @@ const SidebarComponent: React.FC = () => {
                       <li key={tool.id}>
                         <div className="flex items-center group">
                           <button
-                            onClick={() => setActiveTool(tool.id)}
+                            onClick={() => handleToolClick(tool.id)}
                             className={clsx(
                               'flex-1 flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-medium transition-all touch-target',
                               'hover:bg-gradient-to-r hover:from-primary/10 hover:to-accent/10 dark:hover:from-primary/20 dark:hover:to-accent/20',
@@ -151,7 +159,7 @@ const SidebarComponent: React.FC = () => {
                   <li key={tool.id}>
                     <div className="flex items-center group">
                       <button
-                        onClick={() => setActiveTool(tool.id)}
+                        onClick={() => handleToolClick(tool.id)}
                         className={clsx(
                           'flex-1 flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-medium transition-all touch-target',
                           'hover:bg-gradient-to-r hover:from-primary/10 hover:to-accent/10 dark:hover:from-primary/20 dark:hover:to-accent/20',
