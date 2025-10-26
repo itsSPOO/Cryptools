@@ -1,21 +1,6 @@
+# Allow all crawlers
 User-agent: *
 Allow: /
-Disallow: /api/
-Disallow: /*.json$
-
-# Crawl-delay for better server performance
-Crawl-delay: 1
 
 # Sitemap location
 Sitemap: https://cryptools.click/sitemap.xml
-
-# Google bots
-User-agent: Googlebot
-Allow: /
-
-User-agent: Googlebot-Image
-Allow: /
-
-# Bing bot
-User-agent: Bingbot
-Allow: /
