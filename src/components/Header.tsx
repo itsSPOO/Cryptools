@@ -1,13 +1,16 @@
 import React, { memo, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Moon, Sun } from 'lucide-react';
 import { useStore } from '@/store/useStore';
 
 const HeaderComponent: React.FC = () => {
   const { theme, toggleTheme, setActiveTool } = useStore();
+  const navigate = useNavigate();
 
   const handleLogoClick = useCallback(() => {
     setActiveTool(null);
-  }, [setActiveTool]);
+    navigate('/');
+  }, [setActiveTool, navigate]);
 
   return (
     <header className="h-14 bg-gradient-to-r from-white via-light-surface-elevated to-white dark:from-dark-surface dark:via-dark-surface-elevated dark:to-dark-surface border-b border-light-border dark:border-dark-border shadow-lg relative backdrop-blur-sm">

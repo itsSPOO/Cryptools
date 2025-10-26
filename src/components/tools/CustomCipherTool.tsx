@@ -85,11 +85,25 @@ export const CustomCipherTool: React.FC = () => {
   };
 
   return (
-    <ToolCard
-      title="Custom Cipher Generator"
-      description="Create your own character mapping rules and save presets"
-      helpText="Define custom character substitutions to create your own cipher. Map any character to any other character. Save your mappings as presets for later use."
-      codeSnippet={`// Custom Cipher
+    <div className="space-y-6">
+      {/* Page Title */}
+      <h1 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-amber-600 to-orange-600 dark:from-amber-400 dark:to-orange-400 bg-clip-text text-transparent mb-8">
+        Custom Cipher Generator
+      </h1>
+
+      {/* Introduction */}
+      <div className="max-w-4xl mb-8">
+        <p className="text-base md:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+          Create your own custom substitution cipher with our flexible and powerful Custom Cipher Generator tool. Define personalized character-to-character mappings to encrypt and decrypt messages using your unique cipher rules and alphabet substitutions. Map any character to any other character with complete freedom, save your custom ciphers as reusable presets for future use, and import/export your cipher configurations as JSON files for sharing or backup. Perfect for creating secret codes with friends, educational cryptography projects, puzzle creation, teaching substitution cipher concepts, or exploring cryptographic principles with complete creative control. Build simple or complex ciphers, test different mapping strategies, and understand how substitution encryption works at a fundamental level.
+        </p>
+      </div>
+
+      {/* Tool Component */}
+      <ToolCard
+        title=""
+        description="Create your own character mapping rules and save presets"
+        helpText="Define custom character substitutions to create your own cipher. Map any character to any other character. Save your mappings as presets for later use."
+        codeSnippet={`// Custom Cipher
 const mapping = { 'a': 'z', 'b': 'y', 'c': 'x' };
 const encrypted = text.split('').map(c => mapping[c] || c).join('');
 
@@ -97,8 +111,8 @@ const encrypted = text.split('').map(c => mapping[c] || c).join('');
 const reverseMapping = Object.fromEntries(
   Object.entries(mapping).map(([k, v]) => [v, k])
 );`}
-    >
-      <div className="space-y-6">
+      >
+        <div className="space-y-6">
         {/* Add Mapping */}
         <div className="p-4 bg-light-surface dark:bg-dark-bg rounded-lg border border-light-border dark:border-dark-border">
           <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">
@@ -247,7 +261,15 @@ const reverseMapping = Object.fromEntries(
           value={output}
           example="With mapping a→z, b→y: 'abc' → 'zyx'"
         />
+        </div>
+      </ToolCard>
+
+      {/* Conclusion */}
+      <div className="prose dark:prose-invert max-w-none mt-8">
+        <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+          Our Custom Cipher Generator empowers you to design unique encryption schemes tailored to your needs. Whether you're teaching cryptography, creating puzzle games, or developing your own encoding system, this tool provides the flexibility and features you need. All processing happens locally in your browser for complete privacy and security.
+        </p>
       </div>
-    </ToolCard>
+    </div>
   );
 };

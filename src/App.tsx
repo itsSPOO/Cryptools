@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Routes, Route } from 'react-router-dom';
 import { useStore } from '@/store/useStore';
 import { Sidebar } from '@/components/Sidebar';
 import { Header } from '@/components/Header';
@@ -27,6 +27,12 @@ import { VigenereTool } from '@/components/tools/VigenereTool';
 import { AtbashTool } from '@/components/tools/AtbashTool';
 import { CustomCipherTool } from '@/components/tools/CustomCipherTool';
 import { PasswordTool } from '@/components/tools/PasswordTool';
+
+// Legal Pages
+import { PrivacyPolicy } from '@/pages/PrivacyPolicy';
+import { TermsOfUse } from '@/pages/TermsOfUse';
+import { Disclaimer } from '@/pages/Disclaimer';
+import { Contact } from '@/pages/Contact';
 
 const toolComponents: Record<string, React.FC> = {
   base64: Base64Tool,
@@ -167,11 +173,19 @@ function App() {
             {/* Top Ad Banner removed - now shown at bottom of Welcome Screen */}
             
             <div className="max-w-6xl mx-auto mb-6 sm:mb-8">
-              {ActiveToolComponent ? (
-                <ActiveToolComponent />
-              ) : (
-                <WelcomeScreen />
-              )}
+              <Routes>
+                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                <Route path="/terms-of-use" element={<TermsOfUse />} />
+                <Route path="/disclaimer" element={<Disclaimer />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="*" element={
+                  ActiveToolComponent ? (
+                    <ActiveToolComponent />
+                  ) : (
+                    <WelcomeScreen />
+                  )
+                } />
+              </Routes>
             </div>
             
             {/* In-Feed Ad Banner (between content and footer) - Mobile optimized */}

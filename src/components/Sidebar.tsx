@@ -45,10 +45,10 @@ const SidebarComponent: React.FC = () => {
 
   return (
     <aside className={clsx(
-      "h-full bg-gradient-to-b from-white via-light-surface-elevated to-white dark:from-dark-surface dark:via-dark-surface-elevated dark:to-dark-surface border-r border-light-border dark:border-dark-border overflow-y-auto mobile-scroll mobile-optimized shadow-lg backdrop-blur-sm transition-all duration-300 ease-in-out",
+      "h-full flex flex-col bg-gradient-to-b from-white via-light-surface-elevated to-white dark:from-dark-surface dark:via-dark-surface-elevated dark:to-dark-surface border-r border-light-border dark:border-dark-border overflow-y-auto mobile-scroll mobile-optimized shadow-lg backdrop-blur-sm transition-all duration-300 ease-in-out",
       isSidebarCollapsed ? "w-16" : "w-64"
     )}>
-      <div className="p-3">
+      <div className="p-3 flex-shrink-0">
         {/* Toggle Button */}
         <div className="flex items-center justify-between mb-3">
           {!isSidebarCollapsed && (

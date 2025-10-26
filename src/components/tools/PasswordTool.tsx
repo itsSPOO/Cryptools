@@ -137,13 +137,27 @@ const password = generatePassword({
 console.log(password);`;
 
   return (
-    <ToolCard
-      title="Password Generator"
-      description="Generate secure, customizable passwords with strength analysis"
-      helpText="Create strong passwords with customizable character sets, length, and exclusion options. The tool analyzes password strength and provides feedback for improvement."
-      codeSnippet={codeSnippet}
-    >
-      <div className="space-y-6">
+    <div className="space-y-6">
+      {/* Page Title */}
+      <h1 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-teal-600 to-cyan-600 dark:from-teal-400 dark:to-cyan-400 bg-clip-text text-transparent mb-8">
+        Secure Password Generator
+      </h1>
+
+      {/* Introduction */}
+      <div className="max-w-4xl mb-8">
+        <p className="text-base md:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+          Generate strong, secure, and cryptographically random passwords with our advanced Password Generator tool. Create highly customizable passwords with adjustable length from 4 to 128 characters, multiple character type options (uppercase, lowercase, numbers, symbols), and advanced settings to exclude similar-looking characters (0, O, l, I) or ambiguous symbols for better usability. Our tool includes real-time password strength analysis with detailed security feedback and improvement suggestions, helping you create passwords that meet modern security best practices and compliance requirements. Perfect for securing online accounts, applications, databases, WiFi networks, and sensitive data with truly random, cryptographically strong passwords generated using secure browser APIs. All generation happens locally with zero data transmission.
+        </p>
+      </div>
+
+      {/* Tool Component */}
+      <ToolCard
+        title=""
+        description="Generate secure, customizable passwords with strength analysis"
+        helpText="Create strong passwords with customizable character sets, length, and exclusion options. The tool analyzes password strength and provides feedback for improvement."
+        codeSnippet={codeSnippet}
+      >
+        <div className="space-y-6">
         {/* Password Output */}
         <div className="space-y-4">
           <div className="relative">
@@ -375,7 +389,15 @@ console.log(password);`;
             </div>
           </div>
         </div>
+        </div>
+      </ToolCard>
+
+      {/* Conclusion */}
+      <div className="prose dark:prose-invert max-w-none mt-8">
+        <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+          Our Password Generator uses cryptographically secure random number generation to create strong, unpredictable passwords. With features like strength analysis, custom character sets, and the ability to exclude confusing characters, you can generate passwords that balance security with usability. All password generation happens locally in your browser—no passwords are ever transmitted or stored on external servers.
+        </p>
       </div>
-    </ToolCard>
+    </div>
   );
 };

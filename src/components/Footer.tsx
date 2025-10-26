@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Shield, Zap } from 'lucide-react';
 
 export const Footer: React.FC = () => {
@@ -77,50 +78,33 @@ export const Footer: React.FC = () => {
           </div>
           
           <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4">
-            <a
-              href="https://cryptools.click/about"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors text-xs sm:text-sm"
-            >
-              About Us
-            </a>
-            <span className="text-gray-300 dark:text-gray-700 hidden sm:inline">•</span>
-            <a
-              href="https://cryptools.click/privacy-policy"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to="/privacy-policy"
               className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors text-xs sm:text-sm"
             >
               Privacy Policy
-            </a>
+            </Link>
             <span className="text-gray-300 dark:text-gray-700 hidden sm:inline">•</span>
-            <a
-              href="https://cryptools.click/terms-of-use"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to="/terms-of-use"
               className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors text-xs sm:text-sm"
             >
               Terms of Use
-            </a>
+            </Link>
             <span className="text-gray-300 dark:text-gray-700 hidden sm:inline">•</span>
-            <a
-              href="https://cryptools.click/disclaimer"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to="/disclaimer"
               className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors text-xs sm:text-sm"
             >
               Disclaimer
-            </a>
+            </Link>
             <span className="text-gray-300 dark:text-gray-700 hidden sm:inline">•</span>
-            <a
-              href="https://cryptools.click/contact"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to="/contact"
               className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors text-xs sm:text-sm"
             >
               Contact
-            </a>
+            </Link>
           </div>
         </div>
 
