@@ -38,17 +38,17 @@ const SidebarComponent: React.FC = () => {
   return (
     <aside className={clsx(
       "h-full bg-gradient-to-b from-white via-light-surface-elevated to-white dark:from-dark-surface dark:via-dark-surface-elevated dark:to-dark-surface border-r border-light-border dark:border-dark-border overflow-y-auto mobile-scroll mobile-optimized shadow-lg backdrop-blur-sm transition-all duration-300 ease-in-out",
-      isSidebarCollapsed ? "w-16" : "w-80"
+      isSidebarCollapsed ? "w-16" : "w-64"
     )}>
-      <div className="p-3 sm:p-4">
+      <div className="p-3">
         {/* Toggle Button */}
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center justify-between mb-3">
           {!isSidebarCollapsed && (
-            <h1 className="text-lg font-bold text-gray-900 dark:text-white">Crypto Tools</h1>
+            <h1 className="text-base font-bold text-gray-900 dark:text-white">Crypto Tools</h1>
           )}
           <button
             onClick={toggleSidebar}
-            className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+            className="p-1.5 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
             aria-label={isSidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"}
           >
             {isSidebarCollapsed ? (
@@ -60,15 +60,15 @@ const SidebarComponent: React.FC = () => {
         </div>
         {/* Search Bar */}
         {!isSidebarCollapsed && (
-          <div className="mb-4">
+          <div className="mb-3">
             <div className="relative group">
-              <Icons.Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 dark:text-gray-400 group-focus-within:text-primary transition-colors" />
+              <Icons.Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 dark:text-gray-400 group-focus-within:text-primary transition-colors" />
               <input
                 type="text"
                 placeholder="Search tools..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="search-input w-full pl-9 pr-9 py-3 sm:py-4 bg-white dark:bg-dark-surface border border-gray-200 dark:border-gray-700 rounded-xl text-sm text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all touch-target shadow-sm hover:shadow-md focus:shadow-lg focus:bg-white dark:focus:bg-dark-surface"
+                className="search-input w-full pl-8 pr-8 py-2.5 bg-white dark:bg-dark-surface border border-gray-200 dark:border-gray-700 rounded-lg text-sm text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all touch-target shadow-sm hover:shadow-md focus:shadow-lg focus:bg-white dark:focus:bg-dark-surface"
               />
               {searchQuery && (
                 <button
@@ -82,7 +82,7 @@ const SidebarComponent: React.FC = () => {
           </div>
         )}
 
-        <nav className="space-y-4">
+        <nav className="space-y-3">
           {/* Favorites Section */}
           {(() => {
             const favoriteTools = tools.filter(tool => isFavorite(tool.id));
@@ -90,7 +90,7 @@ const SidebarComponent: React.FC = () => {
               return (
                 <div>
                   {!isSidebarCollapsed && (
-                    <h2 className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2 px-2">
+                    <h2 className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1.5 px-1">
                       Favorites
                     </h2>
                   )}
@@ -101,7 +101,7 @@ const SidebarComponent: React.FC = () => {
                           <button
                             onClick={() => setActiveTool(tool.id)}
                             className={clsx(
-                              'flex-1 flex items-center gap-3 px-4 py-3 sm:py-3 rounded-xl text-sm font-medium transition-all touch-target',
+                              'flex-1 flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-medium transition-all touch-target',
                               'hover:bg-gradient-to-r hover:from-primary/10 hover:to-accent/10 dark:hover:from-primary/20 dark:hover:to-accent/20',
                               activeTool === tool.id
                                 ? 'bg-gradient-to-r from-primary to-accent text-white shadow-lg transform scale-105'
@@ -142,7 +142,7 @@ const SidebarComponent: React.FC = () => {
           {Object.entries(groupedTools).map(([category, categoryTools]) => (
             <div key={category}>
               {!isSidebarCollapsed && (
-                <h2 className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2 px-2">
+                <h2 className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1.5 px-1">
                   {categoryNames[category]}
                 </h2>
               )}
@@ -153,7 +153,7 @@ const SidebarComponent: React.FC = () => {
                       <button
                         onClick={() => setActiveTool(tool.id)}
                         className={clsx(
-                          'flex-1 flex items-center gap-3 px-4 py-3 sm:py-3 rounded-xl text-sm font-medium transition-all touch-target',
+                          'flex-1 flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-medium transition-all touch-target',
                           'hover:bg-gradient-to-r hover:from-primary/10 hover:to-accent/10 dark:hover:from-primary/20 dark:hover:to-accent/20',
                           activeTool === tool.id
                             ? 'bg-gradient-to-r from-primary to-accent text-white shadow-lg transform scale-105'

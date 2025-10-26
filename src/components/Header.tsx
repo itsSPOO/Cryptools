@@ -10,22 +10,22 @@ const HeaderComponent: React.FC = () => {
   }, [setActiveTool]);
 
   return (
-    <header className="h-16 bg-gradient-to-r from-white via-light-surface-elevated to-white dark:from-dark-surface dark:via-dark-surface-elevated dark:to-dark-surface border-b border-light-border dark:border-dark-border shadow-lg relative backdrop-blur-sm">
+    <header className="h-14 bg-gradient-to-r from-white via-light-surface-elevated to-white dark:from-dark-surface dark:via-dark-surface-elevated dark:to-dark-surface border-b border-light-border dark:border-dark-border shadow-lg relative backdrop-blur-sm">
       <div className="h-full max-w-full px-4 sm:px-6 flex items-center justify-between">
         {/* Logo - Left side for desktop, hidden on mobile */}
         <button
           onClick={handleLogoClick}
-          className="hidden lg:flex items-center gap-3 hover:opacity-80 transition-all group"
+          className="hidden lg:flex items-center gap-2.5 hover:opacity-80 transition-all group"
           aria-label="Go to home"
         >
-          <div className="p-2 bg-gradient-to-br from-primary to-accent rounded-lg group-hover:from-primary-dark group-hover:to-accent-dark transition-all shadow-lg">
-            <i className="fas fa-code text-white text-lg" />
+          <div className="p-1.5 bg-gradient-to-br from-primary to-accent rounded-lg group-hover:from-primary-dark group-hover:to-accent-dark transition-all shadow-lg">
+            <i className="fas fa-code text-white text-base" />
           </div>
           <div>
-            <h1 className="text-lg font-bold text-gray-900 dark:text-white">
+            <h1 className="text-base font-bold text-gray-900 dark:text-white">
               Cryptools
             </h1>
-            <p className="text-xs text-gray-500 dark:text-gray-400">
+            <p className="text-[10px] text-gray-500 dark:text-gray-400 leading-tight">
               Encryption & Conversion Suite
             </p>
           </div>
@@ -37,25 +37,25 @@ const HeaderComponent: React.FC = () => {
           className="lg:hidden flex items-center gap-2 hover:opacity-80 transition-all group flex-1 justify-center"
           aria-label="Go to home"
         >
-          <div className="p-2 bg-gradient-to-br from-primary to-accent rounded-lg group-hover:from-primary-dark group-hover:to-accent-dark transition-all shadow-lg">
-            <i className="fas fa-code text-white text-lg" />
+          <div className="p-1.5 bg-gradient-to-br from-primary to-accent rounded-lg group-hover:from-primary-dark group-hover:to-accent-dark transition-all shadow-lg">
+            <i className="fas fa-code text-white text-base" />
           </div>
-          <h1 className="text-base font-bold text-gray-900 dark:text-white">
+          <h1 className="text-sm font-bold text-gray-900 dark:text-white">
             Cryptools
           </h1>
         </button>
         
         {/* Right theme button */}
-        <div className="flex items-center gap-2 sm:gap-4 flex-shrink-0">
+        <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
           <button
             onClick={toggleTheme}
-            className="p-3 rounded-xl bg-gradient-to-br from-primary/10 to-accent/10 hover:from-primary/20 hover:to-accent/20 dark:from-primary/20 dark:to-accent/20 dark:hover:from-primary/30 dark:hover:to-accent/30 transition-all touch-target shadow-md hover:shadow-lg"
+            className="p-2.5 rounded-xl bg-gradient-to-br from-white to-light-surface-elevated dark:from-dark-surface dark:to-dark-surface-elevated border border-light-border dark:border-dark-border hover:shadow-lg transition-all duration-200 touch-target"
             aria-label="Toggle theme"
           >
             {theme === 'dark' ? (
-              <Sun className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
+              <Sun className="w-5 h-5 text-primary" />
             ) : (
-              <Moon className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
+              <Moon className="w-5 h-5 text-accent" />
             )}
           </button>
         </div>

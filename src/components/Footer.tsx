@@ -78,7 +78,7 @@ export const Footer: React.FC = () => {
           
           <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4">
             <a
-              href="/about.html"
+              href="https://cryptools.click/about"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors text-xs sm:text-sm"
@@ -87,7 +87,7 @@ export const Footer: React.FC = () => {
             </a>
             <span className="text-gray-300 dark:text-gray-700 hidden sm:inline">•</span>
             <a
-              href="/privacy-policy.html"
+              href="https://cryptools.click/privacy-policy"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors text-xs sm:text-sm"
@@ -96,7 +96,7 @@ export const Footer: React.FC = () => {
             </a>
             <span className="text-gray-300 dark:text-gray-700 hidden sm:inline">•</span>
             <a
-              href="/terms-of-use.html"
+              href="https://cryptools.click/terms-of-use"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors text-xs sm:text-sm"
@@ -105,7 +105,7 @@ export const Footer: React.FC = () => {
             </a>
             <span className="text-gray-300 dark:text-gray-700 hidden sm:inline">•</span>
             <a
-              href="/disclaimer.html"
+              href="https://cryptools.click/disclaimer"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors text-xs sm:text-sm"
@@ -114,7 +114,7 @@ export const Footer: React.FC = () => {
             </a>
             <span className="text-gray-300 dark:text-gray-700 hidden sm:inline">•</span>
             <a
-              href="/contact.html"
+              href="https://cryptools.click/contact"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors text-xs sm:text-sm"

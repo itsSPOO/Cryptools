@@ -101,13 +101,15 @@ function App() {
 
   return (
     <div className="flex flex-col h-screen bg-gradient-to-br from-light-bg via-light-surface-elevated to-light-bg dark:from-dark-bg dark:via-dark-surface-elevated dark:to-dark-bg font-sans mobile-viewport">
-      <Header />
+      <div className="sticky top-0 z-50">
+        <Header />
+      </div>
       
-      <div className="flex flex-1 overflow-hidden relative">
+      <div className="flex flex-1 relative">
          {/* Mobile Menu Button */}
          <button
            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-           className="lg:hidden fixed top-4 left-4 z-50 p-3 bg-gradient-to-br from-white to-light-surface-elevated dark:from-dark-surface dark:to-dark-surface-elevated border border-light-border dark:border-dark-border rounded-xl shadow-lg touch-target hover:shadow-xl transition-all duration-200 backdrop-blur-sm"
+           className="lg:hidden fixed top-16 left-4 z-50 p-2.5 bg-gradient-to-br from-white to-light-surface-elevated dark:from-dark-surface dark:to-dark-surface-elevated border border-light-border dark:border-dark-border rounded-xl shadow-lg touch-target hover:shadow-xl transition-all duration-200 backdrop-blur-sm"
            aria-label="Toggle mobile menu"
          >
           {isMobileMenuOpen ? (
@@ -129,8 +131,8 @@ function App() {
          <aside className={`
            ${isMobileMenuOpen ? 'translate-x-0 block mobile-sidebar-visible' : '-translate-x-full hidden mobile-sidebar-hidden'}
            lg:translate-x-0 lg:block
-           fixed lg:static inset-y-0 left-0 z-50 lg:z-auto
-           ${isSidebarCollapsed ? 'w-16' : 'w-80'} h-full bg-white dark:bg-dark-surface 
+           fixed lg:fixed top-14 lg:top-14 bottom-0 left-0 z-50 lg:z-auto
+           ${isSidebarCollapsed ? 'w-16' : 'w-64'} h-[calc(100vh-3.5rem)] bg-white dark:bg-dark-surface 
            border-r border-light-border dark:border-dark-border 
            overflow-y-auto mobile-scroll mobile-optimized
            transition-all duration-300 ease-in-out
@@ -138,11 +140,11 @@ function App() {
           <Sidebar />
         </aside>
         
-        <main className="flex-1 overflow-y-auto mobile-scroll mobile-optimized">
-          <div className="p-3 sm:p-6 lg:p-8">
+        <main className={`flex-1 overflow-y-auto mobile-scroll mobile-optimized ${isSidebarCollapsed ? 'lg:ml-16' : 'lg:ml-64'} xl:mr-80 transition-all duration-300`}>
+          <div className="p-4 sm:p-6 lg:p-6">
             {/* Top Ad Banner removed - now shown at bottom of Welcome Screen */}
             
-            <div className="max-w-5xl mx-auto mb-6 sm:mb-8">
+            <div className="max-w-6xl mx-auto mb-6 sm:mb-8">
               {ActiveToolComponent ? (
                 <ActiveToolComponent />
               ) : (
@@ -163,8 +165,8 @@ function App() {
         </main>
         
         {/* Right Sidebar Ads - Hidden on mobile and tablet */}
-        <aside className="hidden xl:flex flex-col w-96 bg-white dark:bg-dark-surface border-l border-light-border dark:border-dark-border">
-          <div className="flex-1 overflow-y-auto" style={{ padding: '16px' }}>
+        <aside className="hidden xl:flex flex-col w-80 bg-white dark:bg-dark-surface border-l border-light-border dark:border-dark-border fixed top-14 right-0 bottom-0">
+          <div className="flex-1 overflow-y-auto p-4">
             {/* Top Ad */}
             <AdBannerRightSidebar1 />
             
