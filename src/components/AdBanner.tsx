@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect } from 'react';
 
 interface AdBannerProps {
   slot: string;
@@ -13,60 +13,27 @@ export const AdBanner: React.FC<AdBannerProps> = ({
   responsive = true,
   className = '' 
 }) => {
-  const adRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
   useEffect(() => {
-    // Lazy load ads using Intersection Observer
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !isVisible) {
-            setIsVisible(true);
-          }
-        });
-      },
-      {
-        rootMargin: '100px', // Load ads 100px before they enter viewport
-        threshold: 0.01,
-      }
-    );
-
-    if (adRef.current) {
-      observer.observe(adRef.current);
+    try {
+      // @ts-ignore
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+    } catch (err) {
+      console.error('AdSense error:', err);
     }
-
-    return () => {
-      if (adRef.current) {
-        observer.unobserve(adRef.current);
-      }
-    };
-  }, [isVisible]);
-
-  useEffect(() => {
-    if (isVisible) {
-      try {
-        // @ts-ignore
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-      } catch (err) {
-        console.error('AdSense error:', err);
-      }
-    }
-  }, [isVisible, slot]);
+    // Cleanup: Google AdSense doesn't require explicit cleanup
+  }, [slot]);
 
   return (
-    <div ref={adRef} className={`ad-container ${className}`}>
+    <div className={`ad-container ${className}`}>
       {/* Google AdSense Advertisement */}
-      {isVisible && (
-        <ins
-          className="adsbygoogle"
-          style={{ display: 'block' }}
-          data-ad-client="ca-pub-9656748692315675"
-          data-ad-slot={slot}
-          data-ad-format={format}
-          data-full-width-responsive={responsive ? 'true' : 'false'}
-        />
-      )}
+      <ins
+        className="adsbygoogle"
+        style={{ display: 'block' }}
+        data-ad-client="ca-pub-9656748692315675"
+        data-ad-slot={slot}
+        data-ad-format={format}
+        data-full-width-responsive={responsive ? 'true' : 'false'}
+      />
     </div>
   );
 };
