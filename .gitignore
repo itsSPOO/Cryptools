@@ -31,4 +31,11 @@ coverage
 .env
 .env.local
 .env.production
-*md
+audit-report.md
+DEPLOYMENT-CHECKLIST.md
+FIXES-SUMMARY.md
+OPTIMIZATION-CHECKLIST.md
+PERFORMANCE-OPTIMIZATIONS.md
+scripts/README.md
+SEO-FIX-SUMMARY.md
+SEO-IMPLEMENTATION-GUIDE.md
