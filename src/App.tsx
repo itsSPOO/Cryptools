@@ -58,6 +58,13 @@ function App() {
 
   // Sync URL with active tool
   useEffect(() => {
+    // Check if a tool ID was injected by the build process (for direct /tool/<id> links)
+    const injectedToolId = (window as any).__TOOL_ID;
+    if (injectedToolId && !activeTool) {
+      setActiveTool(injectedToolId);
+      return;
+    }
+
     const path = location.pathname;
     const toolId = urlToToolMap[path];
     
