@@ -43,7 +43,7 @@ export const AdBannerHorizontal: React.FC = () => (
   <div className="w-full flex justify-center my-4 sm:my-6">
     <div className="w-full max-w-4xl mx-auto px-2 sm:px-4">
       <AdBanner 
-        slot="8665748688" // ⚠️ يجب إنشاء Ad Unit منفصل في AdSense للحصول على Slot ID جديد
+        slot="2293881641" // 3rd Banner
         format="auto"
         className="w-full min-h-[80px] sm:min-h-[90px] bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center"
       />
@@ -55,7 +55,7 @@ export const AdBannerHorizontal: React.FC = () => (
 export const AdBannerSidebar: React.FC = () => (
   <div className="w-full my-4 px-2">
     <AdBanner 
-      slot="8186402381" // Square ad slot
+      slot="1234567890" // Unique ID for Sidebar Ad
       format="auto"
       className="w-full min-h-[250px] bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center"
     />
@@ -64,10 +64,10 @@ export const AdBannerSidebar: React.FC = () => (
 
 // In-Feed Ad (Between content)
 export const AdBannerInFeed: React.FC = () => (
-  <div className="w-full flex justify-center my-6 sm:my-8">
-    <div className="w-full max-w-4xl mx-auto px-2 sm:px-4">
+  <div className="w-full">
+    <div className="text-center">
       <AdBanner 
-        slot="8665748688" // ⚠️ يجب إنشاء Ad Unit منفصل في AdSense للحصول على Slot ID جديد (مختلف عن Horizontal)
+        slot="9230539675" // 2nd banner
         format="auto" // Changed from 'fluid' to 'auto' for better compatibility
         className="w-full min-h-[100px] sm:min-h-[120px] bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center"
       />
@@ -79,7 +79,7 @@ export const AdBannerInFeed: React.FC = () => (
 export const AdBannerRightSidebar1: React.FC = () => (
   <div className="w-full" style={{ marginBottom: '24px' }}>
     <AdBanner 
-      slot="8186402381" // ⚠️ يجب إنشاء Ad Unit منفصل في AdSense
+      slot="5519537130" // 4th Banner
       format="auto"
       className="w-full min-h-[250px] bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700"
     />
@@ -90,7 +90,7 @@ export const AdBannerRightSidebar1: React.FC = () => (
 export const AdBannerRightSidebar2: React.FC = () => (
   <div className="w-full" style={{ marginBottom: '24px' }}>
     <AdBanner 
-      slot="8186402381" // ⚠️ يجب إنشاء Ad Unit منفصل في AdSense
+      slot="5973820940" // 2nd square
       format="auto"
       className="w-full min-h-[250px] bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700"
     />
@@ -101,7 +101,7 @@ export const AdBannerRightSidebar2: React.FC = () => (
 export const AdBannerRightSidebar3: React.FC = () => (
   <div className="w-full" style={{ marginBottom: '24px' }}>
     <AdBanner 
-      slot="8186402381" // ⚠️ يجب إنشاء Ad Unit منفصل في AdSense
+      slot="3008923864" // 3rd square
       format="auto"
       className="w-full min-h-[250px] bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700"
     />
