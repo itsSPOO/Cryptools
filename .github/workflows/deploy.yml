@@ -35,33 +35,26 @@ jobs:
     - name: Build
       run: npm run build
 
-    - name: Create SPA fallback (404.html)
-      run: cp dist/index.html dist/404.html
-
-    - name: Create static per-tool pages
+    - name: Verify SEO metadata
       run: |
-        for p in base64 binary url hex leet md5 sha1 sha256 caesar rot13 vigenere atbash custom password; do
-          mkdir -p "dist/tool/$p"
-          cp dist/index.html "dist/tool/$p/index.html"
-        done
-
-    - name: Inject client-side tool ID for per-tool pages
-      run: |
-        for p in base64 binary url hex leet md5 sha1 sha256 caesar rot13 vigenere atbash custom password; do
-          sed -i "s|</head>|<script>window.__TOOL_ID='$p';</script></head>|" "dist/tool/$p/index.html"
-        done
-
-    - name: Create static legal pages
-      run: |
-        for page in privacy-policy terms-of-use disclaimer contact; do
-          mkdir -p "dist/$page"
-          cp dist/index.html "dist/$page/index.html"
-        done
-
-    - name: Verify injection (base64 as example)
-      run: |
-        echo "Checking if __TOOL_ID was injected in base64 page:"
-        grep -o "window.__TOOL_ID='base64'" "dist/tool/base64/index.html" || echo "WARNING: Injection failed!"
+        echo "📊 Verifying unique SEO metadata for all pages..."
+        echo ""
+        echo "✅ Homepage title:"
+        grep -o '<title>.*</title>' dist/index.html | head -1
+        echo ""
+        echo "✅ Base64 tool title:"
+        grep -o '<title>.*</title>' dist/tool/base64/index.html | head -1
+        echo ""
+        echo "✅ Privacy Policy title:"
+        grep -o '<title>.*</title>' dist/privacy-policy/index.html | head -1
+        echo ""
+        echo "✅ Verifying all pages have unique titles..."
+        if [ "$(grep -rh '<title>' dist/ | sort -u | wc -l)" -gt "15" ]; then
+          echo "✅ SUCCESS: Multiple unique titles detected!"
+        else
+          echo "⚠️  WARNING: Possible duplicate titles detected"
+          exit 1
+        fi
 
     - name: Setup Pages
       uses: actions/configure-pages@v4

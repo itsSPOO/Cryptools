@@ -7,11 +7,12 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "postbuild": "react-snap",
+    "postbuild": "node scripts/generate-static-pages.js",
     "preview": "vite preview",
     "test": "jest",
     "test:watch": "jest --watch",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "verify:seo": "node scripts/verify-seo.js",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
