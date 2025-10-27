@@ -5,6 +5,14 @@
   X-XSS-Protection: 1; mode=block
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: geolocation=(), microphone=(), camera=()
+  # Preconnect headers for critical third-party origins
+  Link: <https://fonts.googleapis.com>; rel=preconnect
+  Link: <https://fonts.gstatic.com>; rel=preconnect; crossorigin
+  Link: <https://www.googletagmanager.com>; rel=preconnect
+  Link: <https://pagead2.googlesyndication.com>; rel=preconnect
+  Link: <https://fundingchoicesmessages.google.com>; rel=preconnect
+  Link: <https://www.google-analytics.com>; rel=preconnect
+  Link: <https://cdnjs.cloudflare.com>; rel=preconnect
 
 # Static assets - Long-term caching (1 year)
 /assets/*

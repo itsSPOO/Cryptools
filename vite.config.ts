@@ -49,15 +49,40 @@ export default defineConfig({
         entryFileNames: 'assets/[name]-[hash].js',
         chunkFileNames: 'assets/[name]-[hash].js',
         assetFileNames: 'assets/[name]-[hash].[ext]',
-        manualChunks: {
-          react: ['react', 'react-dom'],
-          router: ['react-router-dom'],
-          vendor: ['zustand', 'react-helmet-async', 'lucide-react'],
+        // Aggressive code splitting for better mobile performance
+        manualChunks: (id) => {
+          // React core - critical
+          if (id.includes('node_modules/react/') || id.includes('node_modules/react-dom/')) {
+            return 'react';
+          }
+          // Router - load on demand
+          if (id.includes('node_modules/react-router-dom/')) {
+            return 'router';
+          }
+          // Lucide icons - lazy load
+          if (id.includes('node_modules/lucide-react/')) {
+            return 'icons';
+          }
+          // Other vendor libraries
+          if (id.includes('node_modules/zustand/') || id.includes('node_modules/react-helmet-async/')) {
+            return 'vendor';
+          }
+          // Split each tool component into its own chunk for lazy loading
+          if (id.includes('src/components/tools/') && !id.includes('node_modules')) {
+            const toolName = id.split('src/components/tools/')[1]?.split('/')[0];
+            if (toolName) {
+              return `tool-${toolName}`;
+            }
+          }
+          // Other node_modules into vendor-misc
+          if (id.includes('node_modules')) {
+            return 'vendor-misc';
+          }
         },
       },
     },
-    chunkSizeWarningLimit: 1000,
-    assetsInlineLimit: 4096, // Inline assets smaller than 4KB
+    chunkSizeWarningLimit: 500, // Lower threshold for mobile
+    assetsInlineLimit: 2048, // Inline smaller assets only (2KB) for mobile
   },
   optimizeDeps: {
     include: ['react', 'react-dom', 'react-router-dom', 'zustand'],
