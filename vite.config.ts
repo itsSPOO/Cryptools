@@ -49,34 +49,33 @@ export default defineConfig({
         entryFileNames: 'assets/[name]-[hash].js',
         chunkFileNames: 'assets/[name]-[hash].js',
         assetFileNames: 'assets/[name]-[hash].[ext]',
-        // Aggressive code splitting for better mobile performance
+        // Optimized code splitting for better mobile performance
         manualChunks: (id) => {
-          // React core - critical
-          if (id.includes('node_modules/react/') || id.includes('node_modules/react-dom/')) {
-            return 'react';
+          // React core and ecosystem - keep together to avoid dependency issues
+          if (id.includes('node_modules/react') || 
+              id.includes('node_modules/react-dom') ||
+              id.includes('node_modules/react-is') ||
+              id.includes('node_modules/scheduler')) {
+            return 'react-vendor';
           }
-          // Router - load on demand
-          if (id.includes('node_modules/react-router-dom/')) {
+          // Router and related
+          if (id.includes('node_modules/react-router-dom') || 
+              id.includes('node_modules/react-router') ||
+              id.includes('node_modules/@remix-run')) {
             return 'router';
           }
+          // React-dependent libraries
+          if (id.includes('node_modules/zustand') || 
+              id.includes('node_modules/react-helmet-async')) {
+            return 'react-libs';
+          }
           // Lucide icons - lazy load
-          if (id.includes('node_modules/lucide-react/')) {
+          if (id.includes('node_modules/lucide-react')) {
             return 'icons';
           }
-          // Other vendor libraries
-          if (id.includes('node_modules/zustand/') || id.includes('node_modules/react-helmet-async/')) {
-            return 'vendor';
-          }
-          // Split each tool component into its own chunk for lazy loading
-          if (id.includes('src/components/tools/') && !id.includes('node_modules')) {
-            const toolName = id.split('src/components/tools/')[1]?.split('/')[0];
-            if (toolName) {
-              return `tool-${toolName}`;
-            }
-          }
-          // Other node_modules into vendor-misc
+          // Other node_modules
           if (id.includes('node_modules')) {
-            return 'vendor-misc';
+            return 'vendor';
           }
         },
       },
