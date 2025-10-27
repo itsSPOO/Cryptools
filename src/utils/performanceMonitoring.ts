@@ -151,7 +151,7 @@ export function initPerformanceMonitoring(
 ): void {
   const handleMetric = (metric: PerformanceMetric) => {
     // Log to console in development
-    if (process.env.NODE_ENV === 'development') {
+    if (import.meta.env.DEV) {
       console.log(`[Performance] ${metric.name}:`, {
         value: `${metric.value}ms`,
         rating: metric.rating,
