@@ -49,34 +49,14 @@ export default defineConfig({
         entryFileNames: 'assets/[name]-[hash].js',
         chunkFileNames: 'assets/[name]-[hash].js',
         assetFileNames: 'assets/[name]-[hash].[ext]',
-        // Optimized code splitting for better mobile performance
-        manualChunks: (id) => {
-          // React core and ecosystem - keep together to avoid dependency issues
-          if (id.includes('node_modules/react') || 
-              id.includes('node_modules/react-dom') ||
-              id.includes('node_modules/react-is') ||
-              id.includes('node_modules/scheduler')) {
-            return 'react-vendor';
-          }
-          // Router and related
-          if (id.includes('node_modules/react-router-dom') || 
-              id.includes('node_modules/react-router') ||
-              id.includes('node_modules/@remix-run')) {
-            return 'router';
-          }
-          // React-dependent libraries
-          if (id.includes('node_modules/zustand') || 
-              id.includes('node_modules/react-helmet-async')) {
-            return 'react-libs';
-          }
-          // Lucide icons - lazy load
-          if (id.includes('node_modules/lucide-react')) {
-            return 'icons';
-          }
-          // Other node_modules
-          if (id.includes('node_modules')) {
-            return 'vendor';
-          }
+        // Conservative code splitting to avoid dependency issues
+        manualChunks: {
+          // Keep React ecosystem together
+          'react-vendor': ['react', 'react-dom', 'react/jsx-runtime'],
+          // Router in separate chunk
+          'router': ['react-router-dom'],
+          // Icons can be lazy loaded
+          'icons': ['lucide-react'],
         },
       },
     },
