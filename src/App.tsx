@@ -58,16 +58,21 @@ function App() {
 
   // Sync URL with active tool
   useEffect(() => {
-    // Check if a tool ID was injected by the build process (for direct /tool/<id> links)
-    const injectedToolId = (window as any).__TOOL_ID;
-    if (injectedToolId && !activeTool) {
-      setActiveTool(injectedToolId);
-      return;
-    }
-
     const path = location.pathname;
     const toolId = urlToToolMap[path];
     
+    // Check if a tool ID was injected by the build process (for direct /tool/<id> links)
+    const injectedToolId = (window as any).__TOOL_ID;
+    
+    // Priority 1: Use injected tool ID if present and no tool is active yet
+    if (injectedToolId && !activeTool) {
+      setActiveTool(injectedToolId);
+      // Clear the injected ID so it doesn't interfere with navigation
+      delete (window as any).__TOOL_ID;
+      return;
+    }
+    
+    // Priority 2: Use URL mapping
     if (toolId && toolId !== activeTool) {
       setActiveTool(toolId);
     } else if (path === '/' && activeTool) {

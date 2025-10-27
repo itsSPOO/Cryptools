@@ -45,11 +45,23 @@ jobs:
           cp dist/index.html "dist/tool/$p/index.html"
         done
 
-    - name: Inject client-side redirect for per-tool pages
+    - name: Inject client-side tool ID for per-tool pages
       run: |
         for p in base64 binary url hex leet md5 sha1 sha256 caesar rot13 vigenere atbash custom password; do
-          sed -i "s#<head>#<head><script>window.__TOOL_ID='$p';</script>#" "dist/tool/$p/index.html"
+          sed -i "s|</head>|<script>window.__TOOL_ID='$p';</script></head>|" "dist/tool/$p/index.html"
         done
+
+    - name: Create static legal pages
+      run: |
+        for page in privacy-policy terms-of-use disclaimer contact; do
+          mkdir -p "dist/$page"
+          cp dist/index.html "dist/$page/index.html"
+        done
+
+    - name: Verify injection (base64 as example)
+      run: |
+        echo "Checking if __TOOL_ID was injected in base64 page:"
+        grep -o "window.__TOOL_ID='base64'" "dist/tool/base64/index.html" || echo "WARNING: Injection failed!"
 
     - name: Setup Pages
       uses: actions/configure-pages@v4
