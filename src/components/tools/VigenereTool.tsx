@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ToolCard, InputField, OutputField, Button } from '../ToolCard';
 import { vigenereEncrypt, vigenereDecrypt } from '@/utils/cryptoUtils';
+import { AdBannerInFeed } from '../AdBanner';
 
 export const VigenereTool: React.FC = () => {
   const [input, setInput] = useState('');
@@ -119,6 +120,114 @@ function vigenereEncrypt(text, key) {
         <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
           The Vigenère Cipher represents a significant advancement in classical cryptography. While modern computers can break it through frequency analysis, it remains an excellent educational tool for understanding polyalphabetic substitution and the evolution of encryption methods. All encryption and decryption happens locally in your browser for complete privacy.
         </p>
+      </div>
+
+      {/* Ad Banner */}
+      <div className="my-8">
+        <AdBannerInFeed />
+      </div>
+
+      {/* Detailed Description Section */}
+      <div className="mt-12 space-y-8 bg-white dark:bg-dark-surface rounded-xl p-6 md:p-8 border border-light-border dark:border-dark-border">
+        <div>
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+            What is the Vigenère Cipher?
+          </h2>
+          <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+            The Vigenère Cipher is a method of encrypting alphabetic text using a series of different Caesar ciphers based on the letters of a keyword. Invented by Blaise de Vigenère in the 16th century, it was considered unbreakable for over 300 years and was nicknamed "le chiffre indéchiffrable" (the indecipherable cipher).
+          </p>
+          <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed">
+            Unlike simple substitution ciphers where each letter is always replaced by the same letter, the Vigenère cipher uses a keyword to apply different shifts to each letter. Each letter of the keyword determines how many positions to shift the corresponding letter in the plaintext. If the keyword is shorter than the message, it repeats cyclically.
+          </p>
+        </div>
+
+        <div>
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+            How to Use the Vigenère Cipher Tool
+          </h2>
+          <div className="space-y-4">
+            <div>
+              <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-2">
+                Encrypting Text:
+              </h3>
+              <ol className="list-decimal list-inside space-y-2 text-gray-700 dark:text-gray-300 ml-4">
+                <li>Enter your plaintext message in the input field</li>
+                <li>Enter a keyword (e.g., "SECRET") - longer keywords are more secure</li>
+                <li>Click the "Encrypt" button</li>
+                <li>The encrypted ciphertext will appear in the output</li>
+              </ol>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-2">
+                Decrypting Text:
+              </h3>
+              <ol className="list-decimal list-inside space-y-2 text-gray-700 dark:text-gray-300 ml-4">
+                <li>Enter the encrypted ciphertext</li>
+                <li>Enter the same keyword that was used for encryption</li>
+                <li>Click the "Decrypt" button</li>
+                <li>The original plaintext will be revealed</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+            Common Use Cases
+          </h2>
+          <ul className="space-y-3 text-gray-700 dark:text-gray-300">
+            <li className="flex items-start">
+              <span className="text-primary mr-2 mt-1">•</span>
+              <span><strong>Education:</strong> Teaching polyalphabetic substitution and advanced cryptography concepts</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-primary mr-2 mt-1">•</span>
+              <span><strong>Historical Study:</strong> Understanding Renaissance-era encryption and its evolution</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-primary mr-2 mt-1">•</span>
+              <span><strong>Puzzle Creation:</strong> Designing challenging cryptographic puzzles and escape room clues</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-primary mr-2 mt-1">•</span>
+              <span><strong>CTF Challenges:</strong> Intermediate-level capture-the-flag cryptography problems</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-primary mr-2 mt-1">•</span>
+              <span><strong>Literary References:</strong> Understanding ciphers in historical texts and novels</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-primary mr-2 mt-1">•</span>
+              <span><strong>Cryptanalysis Practice:</strong> Learning frequency analysis and Kasiski examination techniques</span>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+            Technical Details
+          </h2>
+          <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+            The Vigenère cipher uses a tabula recta (Vigenère square) - a 26×26 grid of letters where each row represents a Caesar cipher with a different shift. For encryption, you find the row corresponding to the key letter and the column corresponding to the plaintext letter; their intersection is the ciphertext letter.
+          </p>
+          <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed">
+            The cipher's strength comes from using multiple Caesar shifts, making simple frequency analysis ineffective. However, if the key length is known or can be determined (using Kasiski examination or index of coincidence), the cipher can be broken by treating it as multiple Caesar ciphers. All encryption and decryption is performed locally in your browser.
+          </p>
+        </div>
+
+        <div className="bg-pink-50 dark:bg-pink-900/20 border border-pink-200 dark:border-pink-800 rounded-lg p-6">
+          <h3 className="text-xl font-semibold text-pink-900 dark:text-pink-300 mb-3">
+            💡 Pro Tips
+          </h3>
+          <ul className="space-y-2 text-pink-800 dark:text-pink-200">
+            <li>• Longer keywords provide better security than shorter ones</li>
+            <li>• Avoid using dictionary words as keys - they're easier to crack</li>
+            <li>• The Vigenère cipher is vulnerable to Kasiski examination attacks</li>
+            <li>• For maximum security, use a key as long as the message (one-time pad)</li>
+            <li>• Modern computers can break Vigenère ciphers quickly - don't use for real security</li>
+          </ul>
+        </div>
       </div>
     </div>
   );

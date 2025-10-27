@@ -2,6 +2,7 @@ import React, { useState, useCallback, useMemo } from 'react';
 import { ToolCard, InputField, Button } from '../ToolCard';
 import { generatePassword, calculatePasswordStrength, type PasswordOptions } from '@/utils/cryptoUtils';
 import { Copy, RefreshCw, Eye, EyeOff, Shield, ShieldCheck, Download, CheckCircle, AlertTriangle, XCircle } from 'lucide-react';
+import { AdBannerInFeed } from '../AdBanner';
 
 export const PasswordTool: React.FC = () => {
   const [password, setPassword] = useState('');
@@ -397,6 +398,126 @@ console.log(password);`;
         <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
           Our Password Generator uses cryptographically secure random number generation to create strong, unpredictable passwords. With features like strength analysis, custom character sets, and the ability to exclude confusing characters, you can generate passwords that balance security with usability. All password generation happens locally in your browser—no passwords are ever transmitted or stored on external servers.
         </p>
+      </div>
+
+      {/* Ad Banner */}
+      <div className="my-8">
+        <AdBannerInFeed />
+      </div>
+
+      {/* Detailed Description Section */}
+      <div className="mt-12 space-y-8 bg-white dark:bg-dark-surface rounded-xl p-6 md:p-8 border border-light-border dark:border-dark-border">
+        <div>
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+            Why Use a Password Generator?
+          </h2>
+          <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+            Strong, unique passwords are your first line of defense against cyber attacks. However, creating truly random and secure passwords manually is difficult. Our password generator uses cryptographically secure random number generation to create passwords that are virtually impossible to guess or crack through brute-force attacks.
+          </p>
+          <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed">
+            With the increasing number of data breaches and password leaks, using unique passwords for each account is critical. A strong password should be long (at least 12-16 characters), include a mix of character types, and be completely random. Our tool makes generating such passwords effortless.
+          </p>
+        </div>
+
+        <div>
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+            How to Use the Password Generator
+          </h2>
+          <ol className="list-decimal list-inside space-y-2 text-gray-700 dark:text-gray-300 ml-4">
+            <li>Set your desired password length (8-128 characters)</li>
+            <li>Choose which character types to include (uppercase, lowercase, numbers, symbols)</li>
+            <li>Optionally exclude confusing characters (0, O, l, 1, etc.)</li>
+            <li>Click "Generate Password" to create a new password</li>
+            <li>View the strength indicator to ensure adequate security</li>
+            <li>Copy the password to your clipboard or download it</li>
+            <li>Store it securely in a password manager</li>
+          </ol>
+        </div>
+
+        <div>
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+            Password Strength Levels
+          </h2>
+          <ul className="space-y-3 text-gray-700 dark:text-gray-300">
+            <li className="flex items-start">
+              <span className="text-red-600 mr-2 mt-1">•</span>
+              <span><strong>Weak:</strong> Short passwords with limited character variety - easily cracked in seconds</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-orange-600 mr-2 mt-1">•</span>
+              <span><strong>Fair:</strong> Moderate length but lacking diversity - vulnerable to dictionary attacks</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-yellow-600 mr-2 mt-1">•</span>
+              <span><strong>Good:</strong> Decent length and variety - adequate for most non-critical accounts</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-green-600 mr-2 mt-1">•</span>
+              <span><strong>Strong:</strong> Long with mixed characters - would take years to crack</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-emerald-600 mr-2 mt-1">•</span>
+              <span><strong>Very Strong:</strong> Maximum security - virtually uncrackable with current technology</span>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+            Best Practices
+          </h2>
+          <ul className="space-y-3 text-gray-700 dark:text-gray-300">
+            <li className="flex items-start">
+              <span className="text-primary mr-2 mt-1">•</span>
+              <span><strong>Use Unique Passwords:</strong> Never reuse passwords across different accounts</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-primary mr-2 mt-1">•</span>
+              <span><strong>Length Matters:</strong> Aim for at least 16 characters for critical accounts</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-primary mr-2 mt-1">•</span>
+              <span><strong>Use a Password Manager:</strong> Store passwords securely in tools like Bitwarden or 1Password</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-primary mr-2 mt-1">•</span>
+              <span><strong>Enable 2FA:</strong> Add two-factor authentication for an extra security layer</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-primary mr-2 mt-1">•</span>
+              <span><strong>Regular Updates:</strong> Change passwords periodically, especially after breaches</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-primary mr-2 mt-1">•</span>
+              <span><strong>Avoid Personal Info:</strong> Don't include names, birthdays, or dictionary words</span>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+            Technical Details
+          </h2>
+          <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+            Our password generator uses the Web Crypto API's <code className="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded">crypto.getRandomValues()</code> method, which provides cryptographically strong random numbers. This is far superior to JavaScript's <code className="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded">Math.random()</code>, which is predictable and unsuitable for security purposes.
+          </p>
+          <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed">
+            The strength calculator evaluates passwords based on length, character diversity, entropy, and common patterns. All generation and analysis happens entirely in your browser - no passwords are ever transmitted over the network or stored on any server, ensuring complete privacy.
+          </p>
+        </div>
+
+        <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-6">
+          <h3 className="text-xl font-semibold text-green-900 dark:text-green-300 mb-3">
+            💡 Pro Tips
+          </h3>
+          <ul className="space-y-2 text-green-800 dark:text-green-200">
+            <li>• For maximum security, use 20+ character passwords with all character types</li>
+            <li>• Exclude confusing characters if you need to type passwords manually</li>
+            <li>• Generate a new password immediately if you suspect compromise</li>
+            <li>• Use passphrases (random words) for memorable yet secure passwords</li>
+            <li>• Never share passwords via email or unencrypted messaging</li>
+          </ul>
+        </div>
       </div>
     </div>
   );

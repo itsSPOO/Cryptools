@@ -3,6 +3,7 @@ import { ToolCard, InputField, OutputField, Button } from '../ToolCard';
 import { applyCustomCipher, createReverseCipherMapping, CustomCipherMapping } from '@/utils/cryptoUtils';
 import { useStore } from '@/store/useStore';
 import { Save, Trash2, Download, Upload } from 'lucide-react';
+import { AdBannerInFeed } from '../AdBanner';
 
 export const CustomCipherTool: React.FC = () => {
   const [input, setInput] = useState('');
@@ -269,6 +270,114 @@ const reverseMapping = Object.fromEntries(
         <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
           Our Custom Cipher Generator empowers you to design unique encryption schemes tailored to your needs. Whether you're teaching cryptography, creating puzzle games, or developing your own encoding system, this tool provides the flexibility and features you need. All processing happens locally in your browser for complete privacy and security.
         </p>
+      </div>
+
+      {/* Ad Banner */}
+      <div className="my-8">
+        <AdBannerInFeed />
+      </div>
+
+      {/* Detailed Description Section */}
+      <div className="mt-12 space-y-8 bg-white dark:bg-dark-surface rounded-xl p-6 md:p-8 border border-light-border dark:border-dark-border">
+        <div>
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+            What is a Custom Cipher?
+          </h2>
+          <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+            A custom cipher is a substitution cipher where you define your own character mapping rules. Unlike predefined ciphers like Caesar or Atbash, you have complete control over how each character is transformed. This allows you to create unique encryption schemes tailored to your specific needs, whether for educational purposes, puzzle creation, or developing proprietary encoding systems.
+          </p>
+          <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed">
+            Custom ciphers are monoalphabetic substitution ciphers where each character in the plaintext is replaced with a specific character according to your mapping. You can create simple letter-to-letter substitutions, complex symbol mappings, or even mix different character types for added complexity.
+          </p>
+        </div>
+
+        <div>
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+            How to Use the Custom Cipher Generator
+          </h2>
+          <div className="space-y-4">
+            <div>
+              <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-2">
+                Creating Your Cipher:
+              </h3>
+              <ol className="list-decimal list-inside space-y-2 text-gray-700 dark:text-gray-300 ml-4">
+                <li>Define character mappings (e.g., a→z, b→y, c→x)</li>
+                <li>Enter one mapping per line in the format: original→replacement</li>
+                <li>Save your cipher with a memorable name for future use</li>
+                <li>Load saved ciphers anytime from your preset list</li>
+              </ol>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-2">
+                Encrypting and Decrypting:
+              </h3>
+              <ol className="list-decimal list-inside space-y-2 text-gray-700 dark:text-gray-300 ml-4">
+                <li>Enter your text in the input field</li>
+                <li>Click "Encrypt" to apply your custom mapping</li>
+                <li>Click "Decrypt" to reverse the transformation</li>
+                <li>Export/import cipher configurations for sharing</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+            Common Use Cases
+          </h2>
+          <ul className="space-y-3 text-gray-700 dark:text-gray-300">
+            <li className="flex items-start">
+              <span className="text-primary mr-2 mt-1">•</span>
+              <span><strong>Education:</strong> Teaching cryptography concepts and substitution cipher principles</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-primary mr-2 mt-1">•</span>
+              <span><strong>Puzzle Games:</strong> Creating unique cipher puzzles for escape rooms and treasure hunts</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-primary mr-2 mt-1">•</span>
+              <span><strong>Secret Messages:</strong> Developing personal codes for private communication</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-primary mr-2 mt-1">•</span>
+              <span><strong>Game Development:</strong> Implementing in-game ciphers and coded messages</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-primary mr-2 mt-1">•</span>
+              <span><strong>Creative Writing:</strong> Adding encrypted elements to stories and novels</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-primary mr-2 mt-1">•</span>
+              <span><strong>Data Obfuscation:</strong> Simple text transformation for non-security purposes</span>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+            Technical Details
+          </h2>
+          <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+            The custom cipher tool uses a character mapping object where each key represents an original character and its value is the replacement character. When encrypting, the tool iterates through each character in the input text and replaces it according to your mapping. Characters not in the mapping remain unchanged.
+          </p>
+          <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed">
+            For decryption, the tool automatically creates a reverse mapping by swapping keys and values. Your cipher configurations are stored locally in browser storage and can be exported as JSON files for backup or sharing. All processing happens client-side for complete privacy.
+          </p>
+        </div>
+
+        <div className="bg-violet-50 dark:bg-violet-900/20 border border-violet-200 dark:border-violet-800 rounded-lg p-6">
+          <h3 className="text-xl font-semibold text-violet-900 dark:text-violet-300 mb-3">
+            💡 Pro Tips
+          </h3>
+          <ul className="space-y-2 text-violet-800 dark:text-violet-200">
+            <li>• Create complete alphabet mappings for consistent encryption</li>
+            <li>• Use unique, non-obvious substitutions to make decryption harder</li>
+            <li>• Save multiple cipher presets for different purposes</li>
+            <li>• Export your ciphers to share with friends or backup</li>
+            <li>• Custom ciphers are for fun and learning - not for real security</li>
+          </ul>
+        </div>
       </div>
     </div>
   );
