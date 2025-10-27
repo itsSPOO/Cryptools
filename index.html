@@ -1,6 +1,16 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z4C9BWF10B"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-Z4C9BWF10B');
+    </script>
+    
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href="https://cryptools.click" />
@@ -147,26 +157,6 @@
         to { transform: rotate(360deg); }
       }
     </style>
-    
-    <!-- Google Analytics - Deferred for better performance -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z4C9BWF10B"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-Z4C9BWF10B', {
-        'send_page_view': false
-      });
-      
-      // Send pageview after page is interactive
-      if (document.readyState === 'complete') {
-        gtag('event', 'page_view');
-      } else {
-        window.addEventListener('load', function() {
-          gtag('event', 'page_view');
-        });
-      }
-    </script>
     
     <!-- Google AdSense - Optimized loading -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9656748692315675"
