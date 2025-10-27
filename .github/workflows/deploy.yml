@@ -35,6 +35,16 @@ jobs:
     - name: Build
       run: npm run build
 
+    - name: Create SPA fallback (404.html)
+      run: cp dist/index.html dist/404.html
+
+    - name: Create static per-tool pages
+      run: |
+        for p in base64 binary url hex leet md5 sha1 sha256 caesar rot13 vigenere atbash custom password; do
+          mkdir -p "dist/tool/$p"
+          cp dist/index.html "dist/tool/$p/index.html"
+        done
+
     - name: Setup Pages
       uses: actions/configure-pages@v4
 
