@@ -14,6 +14,7 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, './src'),
     },
+    dedupe: ['react', 'react-dom'],
   },
   server: {
     port: 3000,
@@ -28,7 +29,7 @@ export default defineConfig({
     reportCompressedSize: true,
     terserOptions: {
       compress: {
-        drop_console: true,
+        drop_console: false, // Keep console for error reporting
         drop_debugger: true,
         passes: 2, // Multiple passes for better compression
         pure_funcs: ['console.log', 'console.info', 'console.debug'],
