@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { X, Cookie } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export function CookieConsent() {
   const [isVisible, setIsVisible] = useState(false);
@@ -38,14 +39,12 @@ export function CookieConsent() {
             </h3>
             <p className="text-xs text-gray-600 dark:text-gray-400 mb-3">
               We use cookies to enhance your experience.{' '}
-              <a 
-                href="/privacy-policy.html" 
+              <Link 
+                to="/privacy-policy" 
                 className="text-blue-600 dark:text-blue-400 hover:underline"
-                target="_blank"
-                rel="noopener noreferrer"
               >
                 Learn more
-              </a>
+              </Link>
             </p>
             
             <div className="flex gap-2">
