@@ -31,10 +31,4 @@ coverage
 .env
 .env.local
 .env.production
-FIX_WHITE_PAGE.md
-audit-report.md
-FIXES-SUMMARY.md
-SEO-IMPLEMENTATION-GUIDE.md
-SEO-FIX-SUMMARY.md
-DEPLOYMENT-CHECKLIST.md
-scripts/README.md
+*md

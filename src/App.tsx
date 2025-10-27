@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, lazy, Suspense } from 'react';
 import { useLocation, Routes, Route } from 'react-router-dom';
 import { useStore } from '@/store/useStore';
 import { Sidebar } from '@/components/Sidebar';
@@ -11,28 +11,29 @@ import { CookieConsent } from '@/components/CookieConsent';
 import { AdBannerInFeed, AdBannerRightSidebar1, AdBannerRightSidebar2, AdBannerRightSidebar3 } from '@/components/AdBanner';
 import { urlToToolMap } from '@/config/seo';
 import { Menu, X } from 'lucide-react';
+import { usePerformanceMonitoring } from '@/hooks/usePerformanceMonitoring';
 
-// Tool Components
-import { Base64Tool } from '@/components/tools/Base64Tool';
-import { BinaryTool } from '@/components/tools/BinaryTool';
-import { UrlTool } from '@/components/tools/UrlTool';
-import { HexTool } from '@/components/tools/HexTool';
-import { LeetTool } from '@/components/tools/LeetTool';
-import { Md5Tool } from '@/components/tools/Md5Tool';
-import { Sha1Tool } from '@/components/tools/Sha1Tool';
-import { Sha256Tool } from '@/components/tools/Sha256Tool';
-import { CaesarTool } from '@/components/tools/CaesarTool';
-import { RotTool } from '@/components/tools/RotTool';
-import { VigenereTool } from '@/components/tools/VigenereTool';
-import { AtbashTool } from '@/components/tools/AtbashTool';
-import { CustomCipherTool } from '@/components/tools/CustomCipherTool';
-import { PasswordTool } from '@/components/tools/PasswordTool';
+// Tool Components - Lazy loaded for better performance
+const Base64Tool = lazy(() => import('@/components/tools/Base64Tool').then(m => ({ default: m.Base64Tool })));
+const BinaryTool = lazy(() => import('@/components/tools/BinaryTool').then(m => ({ default: m.BinaryTool })));
+const UrlTool = lazy(() => import('@/components/tools/UrlTool').then(m => ({ default: m.UrlTool })));
+const HexTool = lazy(() => import('@/components/tools/HexTool').then(m => ({ default: m.HexTool })));
+const LeetTool = lazy(() => import('@/components/tools/LeetTool').then(m => ({ default: m.LeetTool })));
+const Md5Tool = lazy(() => import('@/components/tools/Md5Tool').then(m => ({ default: m.Md5Tool })));
+const Sha1Tool = lazy(() => import('@/components/tools/Sha1Tool').then(m => ({ default: m.Sha1Tool })));
+const Sha256Tool = lazy(() => import('@/components/tools/Sha256Tool').then(m => ({ default: m.Sha256Tool })));
+const CaesarTool = lazy(() => import('@/components/tools/CaesarTool').then(m => ({ default: m.CaesarTool })));
+const RotTool = lazy(() => import('@/components/tools/RotTool').then(m => ({ default: m.RotTool })));
+const VigenereTool = lazy(() => import('@/components/tools/VigenereTool').then(m => ({ default: m.VigenereTool })));
+const AtbashTool = lazy(() => import('@/components/tools/AtbashTool').then(m => ({ default: m.AtbashTool })));
+const CustomCipherTool = lazy(() => import('@/components/tools/CustomCipherTool').then(m => ({ default: m.CustomCipherTool })));
+const PasswordTool = lazy(() => import('@/components/tools/PasswordTool').then(m => ({ default: m.PasswordTool })));
 
-// Legal Pages
-import { PrivacyPolicy } from '@/pages/PrivacyPolicy';
-import { TermsOfUse } from '@/pages/TermsOfUse';
-import { Disclaimer } from '@/pages/Disclaimer';
-import { Contact } from '@/pages/Contact';
+// Legal Pages - Lazy loaded
+const PrivacyPolicy = lazy(() => import('@/pages/PrivacyPolicy').then(m => ({ default: m.PrivacyPolicy })));
+const TermsOfUse = lazy(() => import('@/pages/TermsOfUse').then(m => ({ default: m.TermsOfUse })));
+const Disclaimer = lazy(() => import('@/pages/Disclaimer').then(m => ({ default: m.Disclaimer })));
+const Contact = lazy(() => import('@/pages/Contact').then(m => ({ default: m.Contact })));
 
 const toolComponents: Record<string, React.FC> = {
   base64: Base64Tool,
@@ -55,6 +56,9 @@ function App() {
   const { activeTool, setActiveTool, theme, toggleTheme, isSidebarCollapsed, toggleSidebar } = useStore();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+
+  // Initialize performance monitoring for LCP, FCP, FID, CLS, TTFB
+  usePerformanceMonitoring();
 
   // Sync URL with active tool
   useEffect(() => {
@@ -185,19 +189,25 @@ function App() {
             {/* Top Ad Banner removed - now shown at bottom of Welcome Screen */}
             
             <div className="max-w-6xl mx-auto mb-6 sm:mb-8">
-              <Routes>
-                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-                <Route path="/terms-of-use" element={<TermsOfUse />} />
-                <Route path="/disclaimer" element={<Disclaimer />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="*" element={
-                  ActiveToolComponent ? (
-                    <ActiveToolComponent />
-                  ) : (
-                    <WelcomeScreen />
-                  )
-                } />
-              </Routes>
+              <Suspense fallback={
+                <div className="flex items-center justify-center min-h-[400px]">
+                  <div className="animate-pulse text-gray-600 dark:text-gray-400">Loading...</div>
+                </div>
+              }>
+                <Routes>
+                  <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                  <Route path="/terms-of-use" element={<TermsOfUse />} />
+                  <Route path="/disclaimer" element={<Disclaimer />} />
+                  <Route path="/contact" element={<Contact />} />
+                  <Route path="*" element={
+                    ActiveToolComponent ? (
+                      <ActiveToolComponent />
+                    ) : (
+                      <WelcomeScreen />
+                    )
+                  } />
+                </Routes>
+              </Suspense>
             </div>
             
             {/* In-Feed Ad Banner (between content and footer) - Mobile optimized */}
