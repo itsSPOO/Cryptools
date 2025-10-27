@@ -45,6 +45,12 @@ jobs:
           cp dist/index.html "dist/tool/$p/index.html"
         done
 
+    - name: Normalize per-tool URLs (trim trailing slash before app loads)
+      run: |
+        for p in base64 binary url hex leet md5 sha1 sha256 caesar rot13 vigenere atbash custom password; do
+          sed -i 's#<body>#<body><script>(function(){try{var p=window.location.pathname;if(p.endsWith("/")&&p.indexOf("/tool/")===0){var n=p.slice(0,-1);window.history.replaceState({},"",n+window.location.search+window.location.hash);} }catch(e){}})();</script>#' "dist/tool/$p/index.html"
+        done
+
     - name: Setup Pages
       uses: actions/configure-pages@v4
 
