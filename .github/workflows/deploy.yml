@@ -38,6 +38,11 @@ jobs:
     - name: Create SPA fallback (404.html)
       run: cp dist/index.html dist/404.html
 
+    - name: Normalize root pages (trim trailing slash before app loads)
+      run: |
+        sed -i 's#<body>#<body><script>(function(){try{var p=window.location.pathname;if(p!=="/"&&p.endsWith("/")){var n=p.slice(0,-1);window.history.replaceState({},"",n+window.location.search+window.location.hash);} }catch(e){}})();</script>#' dist/index.html
+        sed -i 's#<body>#<body><script>(function(){try{var p=window.location.pathname;if(p!=="/"&&p.endsWith("/")){var n=p.slice(0,-1);window.history.replaceState({},"",n+window.location.search+window.location.hash);} }catch(e){}})();</script>#' dist/404.html
+
     - name: Create static per-tool pages
       run: |
         for p in base64 binary url hex leet md5 sha1 sha256 caesar rot13 vigenere atbash custom password; do
