@@ -296,6 +296,87 @@ export const toolSEOConfig: Record<string, PageSEO> = {
         name: 'Cryptools'
       }
     }
+  },
+  
+  // Legal Pages
+  privacy: {
+    title: 'Privacy Policy - Cryptools',
+    description: 'Privacy policy for Cryptools. All processing happens in your browser with zero data collection. Learn how we protect your privacy.',
+    keywords: ['privacy policy', 'data protection', 'cryptools privacy', 'no data collection', 'client-side processing'],
+    canonical: 'https://cryptools.click/privacy-policy',
+    h1: 'Privacy Policy',
+    h2: ['Introduction', 'Data Processing', 'Cookies and Local Storage', 'Third-Party Services'],
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: 'Privacy Policy',
+      url: 'https://cryptools.click/privacy-policy',
+      description: 'Privacy policy for Cryptools online encryption and hashing tools.',
+      isPartOf: {
+        '@type': 'WebApplication',
+        name: 'Cryptools'
+      }
+    }
+  },
+  
+  terms: {
+    title: 'Terms of Use - Cryptools',
+    description: 'Terms of use for Cryptools online cryptography tools. Educational purpose, usage guidelines, and legal information.',
+    keywords: ['terms of use', 'terms and conditions', 'cryptools terms', 'usage policy', 'legal terms'],
+    canonical: 'https://cryptools.click/terms-of-use',
+    h1: 'Terms of Use',
+    h2: ['Acceptance of Terms', 'Educational Purpose', 'No Security Guarantees', 'Limitation of Liability'],
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: 'Terms of Use',
+      url: 'https://cryptools.click/terms-of-use',
+      description: 'Terms of use and legal information for Cryptools.',
+      isPartOf: {
+        '@type': 'WebApplication',
+        name: 'Cryptools'
+      }
+    }
+  },
+  
+  disclaimer: {
+    title: 'Disclaimer - Cryptools',
+    description: 'Important disclaimer for Cryptools. Educational use only, security limitations, and usage guidelines for cryptography tools.',
+    keywords: ['disclaimer', 'educational use', 'security disclaimer', 'cryptools disclaimer', 'usage warning'],
+    canonical: 'https://cryptools.click/disclaimer',
+    h1: 'Disclaimer',
+    h2: ['General Information', 'Educational Purpose Only', 'Security Limitations', 'No Warranty'],
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: 'Disclaimer',
+      url: 'https://cryptools.click/disclaimer',
+      description: 'Disclaimer and important usage information for Cryptools.',
+      isPartOf: {
+        '@type': 'WebApplication',
+        name: 'Cryptools'
+      }
+    }
+  },
+  
+  contact: {
+    title: 'Contact Us - Cryptools',
+    description: 'Contact Cryptools for support, feedback, and suggestions. Get in touch with our team at contact@cryptools.click.',
+    keywords: ['contact', 'support', 'feedback', 'cryptools contact', 'customer service', 'get in touch'],
+    canonical: 'https://cryptools.click/contact',
+    h1: 'Contact Us',
+    h2: ['Get in Touch', 'Feedback & Suggestions', 'Frequently Asked Questions'],
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'ContactPage',
+      name: 'Contact Us',
+      url: 'https://cryptools.click/contact',
+      description: 'Contact page for Cryptools support and inquiries.',
+      isPartOf: {
+        '@type': 'WebApplication',
+        name: 'Cryptools'
+      }
+    }
   }
 };
 

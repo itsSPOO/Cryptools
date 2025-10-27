@@ -51,18 +51,18 @@ export const AdBannerHorizontal: React.FC = () => (
   </div>
 );
 
-// Sidebar Ad (Vertical)
+// 2nd banner Ad (Vertical)
 export const AdBannerSidebar: React.FC = () => (
   <div className="w-full my-4 px-2">
     <AdBanner 
-      slot="1234567890" // Unique ID for Sidebar Ad
+      slot="8665748688" // 1st banner
       format="auto"
       className="w-full min-h-[250px] bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center"
     />
   </div>
 );
 
-// In-Feed Ad (Between content)
+// In-Feed banner Ad (Between content)
 export const AdBannerInFeed: React.FC = () => (
   <div className="w-full">
     <div className="text-center">
@@ -75,18 +75,18 @@ export const AdBannerInFeed: React.FC = () => (
   </div>
 );
 
-// Right Sidebar Ad 1 (Top)
+// Right Sidebar squareAd 1 (Top)
 export const AdBannerRightSidebar1: React.FC = () => (
   <div className="w-full" style={{ marginBottom: '24px' }}>
     <AdBanner 
-      slot="5519537130" // 4th Banner
+      slot="8186402381" // 1st square
       format="auto"
       className="w-full min-h-[250px] bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700"
     />
   </div>
 );
 
-// Right Sidebar Ad 2 (Middle)
+// Right Sidebar square Ad 2 (Middle)
 export const AdBannerRightSidebar2: React.FC = () => (
   <div className="w-full" style={{ marginBottom: '24px' }}>
     <AdBanner 
@@ -97,7 +97,7 @@ export const AdBannerRightSidebar2: React.FC = () => (
   </div>
 );
 
-// Right Sidebar Ad 3 (Bottom)
+// Right Sidebar square Ad 3 (Bottom)
 export const AdBannerRightSidebar3: React.FC = () => (
   <div className="w-full" style={{ marginBottom: '24px' }}>
     <AdBanner 
