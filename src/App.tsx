@@ -10,7 +10,6 @@ import { SEOHead } from '@/components/SEOHead';
 import { CookieConsent } from '@/components/CookieConsent';
 import { AdBannerInFeed, AdBannerRightSidebar1, AdBannerRightSidebar2, AdBannerRightSidebar3 } from '@/components/AdBanner';
 import { urlToToolMap } from '@/config/seo';
-import { Menu, X } from 'lucide-react';
 import { usePerformanceMonitoring } from '@/hooks/usePerformanceMonitoring';
 
 // Tool Components - Lazy loaded for better performance
@@ -121,10 +120,10 @@ function App() {
 
   // Close mobile menu when tool is selected
   useEffect(() => {
-    if (activeTool && isMobileMenuOpen) {
+    if (activeTool) {
       setIsMobileMenuOpen(false);
     }
-  }, [activeTool, isMobileMenuOpen]);
+  }, [activeTool]);
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
@@ -146,26 +145,16 @@ function App() {
       <SEOHead page={currentPage} />
       <div className="flex flex-col h-screen bg-gradient-to-br from-light-bg via-light-surface-elevated to-light-bg dark:from-dark-bg dark:via-dark-surface-elevated dark:to-dark-bg font-sans mobile-viewport">
       <div className="sticky top-0 z-50">
-        <Header />
+        <Header
+          isMobileMenuOpen={isMobileMenuOpen}
+          onToggleMobileMenu={() => setIsMobileMenuOpen((prev) => !prev)}
+        />
       </div>
       
       <div className="flex flex-1 relative">
-         {/* Mobile Menu Button */}
-         <button
-           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-           className="lg:hidden fixed top-16 left-4 z-50 p-2.5 bg-gradient-to-br from-white to-light-surface-elevated dark:from-dark-surface dark:to-dark-surface-elevated border border-light-border dark:border-dark-border rounded-xl shadow-lg touch-target hover:shadow-xl transition-all duration-200 backdrop-blur-sm"
-           aria-label="Toggle mobile menu"
-         >
-          {isMobileMenuOpen ? (
-            <X className="w-5 h-5 text-gray-600 dark:text-gray-400" />
-          ) : (
-            <Menu className="w-5 h-5 text-gray-600 dark:text-gray-400" />
-          )}
-        </button>
-
-        {/* Mobile Menu Overlay */}
-        {isMobileMenuOpen && (
-          <div 
+         {/* Mobile Menu Overlay */}
+         {isMobileMenuOpen && (
+           <div 
             className="lg:hidden fixed inset-0 bg-black/50 z-40"
             onClick={() => setIsMobileMenuOpen(false)}
           />
