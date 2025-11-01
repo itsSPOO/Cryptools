@@ -1,5 +1,4 @@
-# Redirect sitemap.xml with trailing slash to sitemap.xml
-/sitemap.xml/    /sitemap.xml   301
-
 # Redirect all routes to index.html for client-side routing
-/*    /index.html   200
+/sitemap.xml       /sitemap.xml   200
+/sitemap.xml/*     /sitemap.xml   301
+/*                  /index.html   200
