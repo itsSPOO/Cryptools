@@ -11,28 +11,28 @@
 
   <!-- Legal Pages -->
   <url>
-    <loc>https://cryptools.click/privacy-policy</loc>
+    <loc>https://cryptools.click/privacy-policy/</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
 
   <url>
-    <loc>https://cryptools.click/terms-of-use</loc>
+    <loc>https://cryptools.click/terms-of-use/</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
 
   <url>
-    <loc>https://cryptools.click/disclaimer</loc>
+    <loc>https://cryptools.click/disclaimer/</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
 
   <url>
-    <loc>https://cryptools.click/contact</loc>
+    <loc>https://cryptools.click/contact/</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -40,35 +40,35 @@
 
   <!-- Popular Tools - Higher Priority -->
   <url>
-    <loc>https://cryptools.click/tool/base64</loc>
+    <loc>https://cryptools.click/tool/base64/</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://cryptools.click/tool/md5</loc>
+    <loc>https://cryptools.click/tool/md5/</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://cryptools.click/tool/sha256</loc>
+    <loc>https://cryptools.click/tool/sha256/</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://cryptools.click/tool/url</loc>
+    <loc>https://cryptools.click/tool/url/</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://cryptools.click/tool/password</loc>
+    <loc>https://cryptools.click/tool/password/</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -76,42 +76,42 @@
 
   <!-- Standard Tools -->
   <url>
-    <loc>https://cryptools.click/tool/binary</loc>
+    <loc>https://cryptools.click/tool/binary/</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://cryptools.click/tool/hex</loc>
+    <loc>https://cryptools.click/tool/hex/</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://cryptools.click/tool/sha1</loc>
+    <loc>https://cryptools.click/tool/sha1/</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://cryptools.click/tool/caesar</loc>
+    <loc>https://cryptools.click/tool/caesar/</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://cryptools.click/tool/rot13</loc>
+    <loc>https://cryptools.click/tool/rot13/</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://cryptools.click/tool/vigenere</loc>
+    <loc>https://cryptools.click/tool/vigenere/</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -119,21 +119,21 @@
 
   <!-- Specialty Tools -->
   <url>
-    <loc>https://cryptools.click/tool/leet</loc>
+    <loc>https://cryptools.click/tool/leet/</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://cryptools.click/tool/atbash</loc>
+    <loc>https://cryptools.click/tool/atbash/</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://cryptools.click/tool/custom</loc>
+    <loc>https://cryptools.click/tool/custom/</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
