@@ -14,10 +14,11 @@
       // Remove trailing slash if present and not root
       if (path !== '/' && path.endsWith('/')) {
         path = path.slice(0, -1);
+        // Redirect to URL without trailing slash
         window.location.replace(window.location.origin + path + search + hash);
       } else {
-        // If no trailing slash, redirect to index.html for SPA routing
-        window.location.replace(window.location.origin + '/index.html' + '?redirect=' + encodeURIComponent(path + search + hash));
+        // For other 404s, redirect to home page for SPA routing
+        window.location.replace(window.location.origin + '/' + search + hash);
       }
     })();
   </script>

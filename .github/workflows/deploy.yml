@@ -35,6 +35,16 @@ jobs:
     - name: Build
       run: npm run build
 
+    - name: Verify 404.html exists
+      run: |
+        if [ -f "dist/404.html" ]; then
+          echo "✅ Custom 404.html found"
+          head -5 dist/404.html
+        else
+          echo "❌ 404.html not found!"
+          exit 1
+        fi
+
     - name: Verify SEO metadata
       run: |
         echo "📊 Verifying unique SEO metadata for all pages..."
