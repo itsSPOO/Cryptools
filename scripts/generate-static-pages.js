@@ -332,57 +332,6 @@ function generateStaticPages() {
   fs.writeFileSync(path.join(distPath, '.nojekyll'), '');
   console.log('✅ Created .nojekyll file for GitHub Pages');
 
-  // Convert static files to folders with index.html to handle both /file and /file/ URLs
-  // This is necessary because GitHub Pages serves 404 for /file.ext/ if file.ext exists as a file
-  const staticFilesToConvert = [
-    { file: 'sitemap.xml', contentType: 'application/xml' },
-    { file: 'robots.txt', contentType: 'text/plain' },
-    { file: 'ads.txt', contentType: 'text/plain' }
-  ];
-  
-  staticFilesToConvert.forEach(({ file, contentType }) => {
-    const filePath = path.join(distPath, file);
-    const folderPath = path.join(distPath, file);
-    
-    // Read original file content if it exists
-    if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
-      const content = fs.readFileSync(filePath, 'utf-8');
-      
-      // Delete the file
-      fs.unlinkSync(filePath);
-      
-      // Create folder with same name
-      fs.mkdirSync(folderPath, { recursive: true });
-      
-      // Create index.html that serves the content with proper headers
-      const indexContent = `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="Content-Type" content="${contentType}; charset=utf-8">
-  <title>${file}</title>
-  <script>
-    // Redirect to canonical URL without trailing slash if accessing with slash
-    if (location.pathname.endsWith('/') && location.pathname !== '/') {
-      var canonical = location.pathname.slice(0, -1);
-      location.replace(canonical + location.search + location.hash);
-    }
-  </script>
-</head>
-<body>
-<pre>${content}</pre>
-</body>
-</html>`;
-      
-      fs.writeFileSync(path.join(folderPath, 'index.html'), indexContent);
-      
-      // Also create the file without extension for direct access
-      fs.writeFileSync(path.join(folderPath, 'index'), content);
-      
-      console.log(`✅ Converted ${file} to folder with index.html`);
-    }
-  });
-
   console.log('\n✨ All static pages generated successfully!');
   console.log('📊 Total pages: ' + (tools.length + legalPages.length + 1));
 }
