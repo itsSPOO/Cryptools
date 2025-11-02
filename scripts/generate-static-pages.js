@@ -288,9 +288,29 @@ function generateStaticPages() {
   // Create 404.html with GitHub Pages SPA redirect script
   const redirect404Script = `
     <script>
-      // GitHub Pages SPA redirect handler
-      // Store the path and redirect to index.html so the SPA can handle the route
-      sessionStorage.redirect = location.href;
+      // GitHub Pages SPA redirect handler - only for valid app routes
+      (function() {
+        var path = location.pathname;
+        
+        // Valid app route patterns (tools, legal pages, root)
+        var validRoutes = [
+          /^\/tool\//,
+          /^\/privacy-policy\/?$/,
+          /^\/terms-of-use\/?$/,
+          /^\/disclaimer\/?$/,
+          /^\/contact\/?$/
+        ];
+        
+        // Check if this is a valid app route
+        var isValidRoute = validRoutes.some(function(pattern) {
+          return pattern.test(path);
+        });
+        
+        // Only redirect valid routes, let invalid URLs show 404
+        if (isValidRoute) {
+          sessionStorage.redirect = location.href;
+        }
+      })();
     </script>
   `;
   const html404 = baseHtml.replace('</head>', `${redirect404Script}\n  </head>`);
