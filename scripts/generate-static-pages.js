@@ -285,16 +285,9 @@ function generateStaticPages() {
     console.log(`✅ Generated /${route} with title: "${seoConfig.title}"`);
   });
 
-  // Copy custom 404.html with trailing slash redirect
-  const custom404Path = path.join(__dirname, '..', 'public', '404.html');
-  if (fs.existsSync(custom404Path)) {
-    fs.copyFileSync(custom404Path, path.join(distPath, '404.html'));
-    console.log('✅ Copied custom 404.html (with trailing slash redirect)');
-  } else {
-    // Fallback to base HTML if custom 404 doesn't exist
-    fs.writeFileSync(path.join(distPath, '404.html'), baseHtml);
-    console.log('✅ Generated 404.html (SPA fallback)');
-  }
+  // Create 404.html (SPA fallback)
+  fs.writeFileSync(path.join(distPath, '404.html'), baseHtml);
+  console.log('✅ Generated 404.html (SPA fallback)');
 
   console.log('\n✨ All static pages generated successfully!');
   console.log('📊 Total pages: ' + (tools.length + legalPages.length + 1));
