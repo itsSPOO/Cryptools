@@ -1,0 +1,9 @@
+# Exclude static files from SPA routing
+/sitemap.xml   /sitemap.xml   200
+/robots.txt    /robots.txt    200
+/ads.txt       /ads.txt       200
+/manifest.json /manifest.json 200
+/favicon.svg   /favicon.svg   200
+
+# Finally, handle all other routes with client-side routing
+/*             /index.html   200

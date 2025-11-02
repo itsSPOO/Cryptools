@@ -292,12 +292,22 @@ function generateStaticPages() {
       (function() {
         var path = location.pathname;
         
-        // If URL has trailing slash on a static file, redirect to non-slash version
+        // List of static files that should be served directly
+        var staticFiles = ['/sitemap.xml', '/robots.txt', '/ads.txt', '/manifest.json', '/favicon.svg', '/favicon.ico'];
+        
+        // If URL has trailing slash, check if it's a static file
         if (path.endsWith('/')) {
           var pathWithoutSlash = path.slice(0, -1);
-          var staticFileExtensions = ['.xml', '.txt', '.json', '.html', '.ico', '.png', '.jpg', '.svg'];
           
-          // Check if the path without slash ends with a static file extension
+          // Check if it's a known static file
+          if (staticFiles.indexOf(pathWithoutSlash) !== -1) {
+            // Redirect to URL without trailing slash
+            location.replace(pathWithoutSlash + location.search + location.hash);
+            return;
+          }
+          
+          // Also check by file extension
+          var staticFileExtensions = ['.xml', '.txt', '.json', '.html', '.ico', '.png', '.jpg', '.svg', '.css', '.js'];
           var isStaticFile = staticFileExtensions.some(function(ext) {
             return pathWithoutSlash.endsWith(ext);
           });
