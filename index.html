@@ -163,14 +163,13 @@
             crossorigin="anonymous"></script>
   </head>
   <body>
-    <!-- Remove trailing slash before React loads -->
+    <!-- GitHub Pages: Remove trailing slash redirect -->
     <script>
       (function() {
         var path = window.location.pathname;
-        // If path ends with / and is not root, redirect without trailing slash
         if (path !== '/' && path.endsWith('/')) {
           var newPath = path.slice(0, -1);
-          window.location.replace(newPath + window.location.search + window.location.hash);
+          window.location.replace(window.location.origin + newPath + window.location.search + window.location.hash);
         }
       })();
     </script>

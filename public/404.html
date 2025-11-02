@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Redirecting...</title>
   <script>
-    // GitHub Pages 404 handler with trailing slash removal
+    // GitHub Pages 404 handler - Remove trailing slash and redirect
     (function() {
       var path = window.location.pathname;
       var search = window.location.search;
@@ -14,11 +14,11 @@
       // Remove trailing slash if present and not root
       if (path !== '/' && path.endsWith('/')) {
         path = path.slice(0, -1);
+        window.location.replace(window.location.origin + path + search + hash);
+      } else {
+        // If no trailing slash, redirect to index.html for SPA routing
+        window.location.replace(window.location.origin + '/index.html' + '?redirect=' + encodeURIComponent(path + search + hash));
       }
-      
-      // Redirect to the correct URL
-      var newUrl = window.location.origin + path + search + hash;
-      window.location.replace(newUrl);
     })();
   </script>
 </head>

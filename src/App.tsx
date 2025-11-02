@@ -8,7 +8,6 @@ import { WelcomeScreen } from '@/components/WelcomeScreen';
 import { KeyboardShortcuts } from '@/components/KeyboardShortcuts';
 import { SEOHead } from '@/components/SEOHead';
 import { CookieConsent } from '@/components/CookieConsent';
-import { TrailingSlashRedirect } from '@/components/TrailingSlashRedirect';
 import { AdBannerInFeed, AdBannerRightSidebar1, AdBannerRightSidebar2, AdBannerRightSidebar3 } from '@/components/AdBanner';
 import { urlToToolMap } from '@/config/seo';
 import { usePerformanceMonitoring } from '@/hooks/usePerformanceMonitoring';
@@ -144,7 +143,6 @@ function App() {
   return (
     <>
       <SEOHead page={currentPage} />
-      <TrailingSlashRedirect />
       <div className="flex flex-col h-screen bg-gradient-to-br from-light-bg via-light-surface-elevated to-light-bg dark:from-dark-bg dark:via-dark-surface-elevated dark:to-dark-bg font-sans mobile-viewport">
       <div className="sticky top-0 z-50">
         <Header
