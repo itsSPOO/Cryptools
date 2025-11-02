@@ -161,6 +161,17 @@
     <!-- Google AdSense - Optimized loading -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9656748692315675"
             crossorigin="anonymous"></script>
+    
+    <!-- GitHub Pages SPA redirect restore -->
+    <script>
+      (function() {
+        var redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect !== location.href) {
+          history.replaceState(null, null, redirect);
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

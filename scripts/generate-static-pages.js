@@ -285,9 +285,21 @@ function generateStaticPages() {
     console.log(`✅ Generated /${route} with title: "${seoConfig.title}"`);
   });
 
-  // Create 404.html (SPA fallback)
-  fs.writeFileSync(path.join(distPath, '404.html'), baseHtml);
-  console.log('✅ Generated 404.html (SPA fallback)');
+  // Create 404.html with GitHub Pages SPA redirect script
+  const redirect404Script = `
+    <script>
+      // GitHub Pages SPA redirect handler
+      // Store the path and redirect to index.html so the SPA can handle the route
+      sessionStorage.redirect = location.href;
+    </script>
+  `;
+  const html404 = baseHtml.replace('</head>', `${redirect404Script}\n  </head>`);
+  fs.writeFileSync(path.join(distPath, '404.html'), html404);
+  console.log('✅ Generated 404.html with GitHub Pages SPA redirect');
+
+  // Create .nojekyll file for GitHub Pages (prevents Jekyll processing)
+  fs.writeFileSync(path.join(distPath, '.nojekyll'), '');
+  console.log('✅ Created .nojekyll file for GitHub Pages');
 
   console.log('\n✨ All static pages generated successfully!');
   console.log('📊 Total pages: ' + (tools.length + legalPages.length + 1));
