@@ -288,28 +288,29 @@ function generateStaticPages() {
   // Create 404.html with GitHub Pages SPA redirect script
   const redirect404Script = `
     <script>
-      // GitHub Pages SPA redirect handler - only for valid app routes
+      // GitHub Pages SPA redirect handler
       (function() {
         var path = location.pathname;
         
-        // Valid app route patterns (tools, legal pages, root)
-        var validRoutes = [
-          /^\/tool\//,
-          /^\/privacy-policy\/?$/,
-          /^\/terms-of-use\/?$/,
-          /^\/disclaimer\/?$/,
-          /^\/contact\/?$/
-        ];
-        
-        // Check if this is a valid app route
-        var isValidRoute = validRoutes.some(function(pattern) {
-          return pattern.test(path);
-        });
-        
-        // Only redirect valid routes, let invalid URLs show 404
-        if (isValidRoute) {
-          sessionStorage.redirect = location.href;
+        // If URL has trailing slash on a static file, redirect to non-slash version
+        if (path.endsWith('/')) {
+          var pathWithoutSlash = path.slice(0, -1);
+          var staticFileExtensions = ['.xml', '.txt', '.json', '.html', '.ico', '.png', '.jpg', '.svg'];
+          
+          // Check if the path without slash ends with a static file extension
+          var isStaticFile = staticFileExtensions.some(function(ext) {
+            return pathWithoutSlash.endsWith(ext);
+          });
+          
+          if (isStaticFile) {
+            // Redirect to URL without trailing slash
+            location.replace(pathWithoutSlash + location.search + location.hash);
+            return;
+          }
         }
+        
+        // For SPA routes, store the path and redirect to index.html
+        sessionStorage.redirect = location.href;
       })();
     </script>
   `;
