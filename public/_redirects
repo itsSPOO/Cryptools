@@ -1,9 +1,9 @@
+# Remove trailing slashes - MUST BE FIRST
+/*/    /:splat    301!
+
 # Handle static files
 /robots.txt    /robots.txt    200
 /sitemap.xml   /sitemap.xml   200
-
-# Remove trailing slashes
-/*/    /:splat    301
 
 # Client-side routing (exclude known static files)
 /*.txt         /:splat    200
