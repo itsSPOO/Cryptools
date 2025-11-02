@@ -293,7 +293,7 @@ function generateStaticPages() {
         var path = location.pathname;
         
         // List of static files that should be served directly
-        var staticFiles = ['/sitemap.xml', '/robots.txt', '/ads.txt', '/manifest.json', '/favicon.svg', '/favicon.ico'];
+        var staticFiles = ['/sitemap.xml', '/robots.txt', '/ads.txt', '/manifest.json', '/favicon.svg', '/favicon.ico', '/favicon-96x96.png', '/apple-touch-icon.png', '/web-app-manifest-192x192.png', '/web-app-manifest-512x512.png'];
         
         // If URL has trailing slash, check if it's a static file
         if (path.endsWith('/')) {
