@@ -292,34 +292,37 @@ function generateStaticPages() {
       (function() {
         var path = location.pathname;
         
-        // List of static files that should be served directly
-        var staticFiles = ['/sitemap.xml', '/robots.txt', '/ads.txt', '/manifest.json', '/favicon.svg', '/favicon.ico', '/favicon-96x96.png', '/apple-touch-icon.png', '/web-app-manifest-192x192.png', '/web-app-manifest-512x512.png'];
+        // List of static files that should be served directly (without redirecting)
+        var staticFiles = ['/sitemap.xml', '/robots.txt', '/ads.txt', '/manifest.json', '/favicon.svg', '/favicon.ico'];
         
-        // If URL has trailing slash, check if it's a static file
+        // File extensions for static files
+        var staticFileExtensions = ['.xml', '.txt', '.json', '.ico', '.png', '.jpg', '.svg', '.css', '.js', '.woff', '.woff2', '.ttf', '.eot'];
+        
+        // Check if current path is a static file (by exact match or extension)
+        var isStaticFile = staticFiles.indexOf(path) !== -1 || 
+                          staticFileExtensions.some(function(ext) { return path.endsWith(ext); });
+        
+        // If it's a static file, don't redirect - let GitHub Pages handle the 404 naturally
+        if (isStaticFile) {
+          return;
+        }
+        
+        // If URL has trailing slash, check if it's trying to access a static file
         if (path.endsWith('/')) {
           var pathWithoutSlash = path.slice(0, -1);
           
-          // Check if it's a known static file
-          if (staticFiles.indexOf(pathWithoutSlash) !== -1) {
-            // Redirect to URL without trailing slash
-            location.replace(pathWithoutSlash + location.search + location.hash);
-            return;
-          }
+          // Check if path without slash is a known static file
+          var isStaticFileWithSlash = staticFiles.indexOf(pathWithoutSlash) !== -1 || 
+                                     staticFileExtensions.some(function(ext) { return pathWithoutSlash.endsWith(ext); });
           
-          // Also check by file extension
-          var staticFileExtensions = ['.xml', '.txt', '.json', '.html', '.ico', '.png', '.jpg', '.svg', '.css', '.js'];
-          var isStaticFile = staticFileExtensions.some(function(ext) {
-            return pathWithoutSlash.endsWith(ext);
-          });
-          
-          if (isStaticFile) {
+          if (isStaticFileWithSlash) {
             // Redirect to URL without trailing slash
             location.replace(pathWithoutSlash + location.search + location.hash);
             return;
           }
         }
         
-        // For SPA routes, store the path and redirect to index.html
+        // For SPA routes only, store the path and redirect to index.html
         sessionStorage.redirect = location.href;
       })();
     </script>
