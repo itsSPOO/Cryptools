@@ -285,72 +285,9 @@ function generateStaticPages() {
     console.log(`✅ Generated /${route} with title: "${seoConfig.title}"`);
   });
 
-  // Create 404.html with trailing slash redirect logic
-  const html404 = `<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إعادة التوجيه...</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-color: #f9fafb;
-            color: #111827;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-        }
-        .container {
-            text-align: center;
-            padding: 40px;
-        }
-        .spinner {
-            width: 40px;
-            height: 40px;
-            margin: 20px auto;
-            border: 3px solid #e5e7eb;
-            border-top-color: #3b82f6;
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-        }
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-    </style>
-    <script>
-        (function() {
-            var path = window.location.pathname;
-            var search = window.location.search;
-            var hash = window.location.hash;
-            
-            // Remove trailing slash from path if it exists and path is not just "/"
-            if (path !== '/' && path.endsWith('/')) {
-                var newPath = path.slice(0, -1);
-                var newUrl = newPath + search + hash;
-                
-                // Redirect to URL without trailing slash (301 permanent redirect behavior)
-                window.location.replace(newUrl);
-            } else {
-                // For other 404 cases, redirect to home page for SPA routing
-                window.location.replace('/' + search + hash);
-            }
-        })();
-    </script>
-</head>
-<body>
-    <div class="container">
-        <div class="spinner"></div>
-        <p>جاري إعادة التوجيه...</p>
-    </div>
-</body>
-</html>`;
-  
-  fs.writeFileSync(path.join(distPath, '404.html'), html404);
-  console.log('✅ Generated 404.html with trailing slash redirect');
+  // Create 404.html (SPA fallback)
+  fs.writeFileSync(path.join(distPath, '404.html'), baseHtml);
+  console.log('✅ Generated 404.html (SPA fallback)');
 
   console.log('\n✨ All static pages generated successfully!');
   console.log('📊 Total pages: ' + (tools.length + legalPages.length + 1));
